@@ -1,0 +1,67 @@
+import type { FullDesignTokens } from '@/types';
+
+import { defaultLightTokens } from './default';
+
+export const natureLightTokens: FullDesignTokens = {
+  ...defaultLightTokens,
+  color: {
+    ...defaultLightTokens.color,
+    primary: {
+      50: '#edf5f0',
+      100: '#d4e6db',
+      200: '#abd1ba',
+      300: '#74b593',
+      400: '#3d9a6c',
+      500: '#2d6a4f',
+      600: '#265945',
+      700: '#1f4a39',
+      800: '#1a3d2f',
+      900: '#163327',
+      950: '#0c1d16',
+    },
+    secondary: {
+      50: '#f0faf8',
+      100: '#d5f0ea',
+      200: '#aee3d7',
+      300: '#6fcbb7',
+      400: '#52b788',
+      500: '#40916c',
+      600: '#2d6a4f',
+      700: '#1b4332',
+      800: '#153628',
+      900: '#112b20',
+      950: '#081912',
+    },
+    accent: {
+      50: '#fefbe8',
+      100: '#fef7c3',
+      200: '#fde98a',
+      300: '#fcd34d',
+      400: '#e9c46a',
+      500: '#d4a373',
+      600: '#b5835a',
+      700: '#936639',
+      800: '#774f2b',
+      900: '#634225',
+      950: '#382414',
+    },
+    neutral: {
+      50: '#f8faf6',
+      100: '#eff3eb',
+      200: '#dce6d4',
+      300: '#c2d0b6',
+      400: '#9bae8e',
+      500: '#7c8f70',
+      600: '#637258',
+      700: '#4f5b47',
+      800: '#3a4334',
+      900: '#2c3327',
+      950: '#191d16',
+    },
+  },
+  surface: {
+    ...defaultLightTokens.surface,
+    raised: '#ffffff',
+    background: { primary: '#2d6a4f', secondary: '#52b788' },
+  },
+};

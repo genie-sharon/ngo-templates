@@ -1,0 +1,76 @@
+import type { FullDesignTokens } from '@/types';
+
+import { defaultLightTokens } from './default';
+
+export const artsLightTokens: FullDesignTokens = {
+  ...defaultLightTokens,
+  color: {
+    ...defaultLightTokens.color,
+    primary: {
+      50: '#f7f7f7',
+      100: '#e6e6e6',
+      200: '#cccccc',
+      300: '#a3a3a3',
+      400: '#737373',
+      500: '#2d2d2d',
+      600: '#1f1f1f',
+      700: '#171717',
+      800: '#0f0f0f',
+      900: '#0a0a0a',
+      950: '#050505',
+    },
+    secondary: {
+      50: '#fefcf5',
+      100: '#fdf8e8',
+      200: '#fbf0cc',
+      300: '#f8e3a3',
+      400: '#f2d06e',
+      500: '#e8c06a',
+      600: '#d4a84a',
+      700: '#b08538',
+      800: '#8c662d',
+      900: '#725226',
+      950: '#3f2d14',
+    },
+    accent: {
+      50: '#f5f0ff',
+      100: '#ede0ff',
+      200: '#dcc4ff',
+      300: '#c29eff',
+      400: '#a36eff',
+      500: '#7c3aed',
+      600: '#6d28d9',
+      700: '#5b21b6',
+      800: '#4c1d95',
+      900: '#3b0f7a',
+      950: '#1e085a',
+    },
+    neutral: {
+      50: '#fcfcfc',
+      100: '#f5f5f5',
+      200: '#ebebeb',
+      300: '#d6d6d6',
+      400: '#a8a8a8',
+      500: '#8a8a8a',
+      600: '#6e6e6e',
+      700: '#595959',
+      800: '#3d3d3d',
+      900: '#292929',
+      950: '#1a1a1a',
+    },
+  },
+  surface: {
+    ...defaultLightTokens.surface,
+    base: '#fcfcfc',
+    raised: '#ffffff',
+    selected: '#f5f0ff',
+  },
+  typography: {
+    ...defaultLightTokens.typography,
+    fontFamily: {
+      body: "'Inter', system-ui, -apple-system, sans-serif",
+      heading: "'Inter', system-ui, -apple-system, sans-serif",
+      mono: "'JetBrains Mono', monospace",
+    },
+  },
+};

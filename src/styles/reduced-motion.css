@@ -1,0 +1,80 @@
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-shimmer {
+    background: var(--kindonar-surface-interactive) !important;
+    animation: none !important;
+  }
+
+  .animate-pulse {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .animate-ping {
+    animation: none !important;
+  }
+
+  .animate-spin {
+    animation: none !important;
+  }
+
+  .animate-float,
+  .animate-float-reverse,
+  .animate-wiggle {
+    animation: none !important;
+  }
+
+  .animate-ripple {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .parallax-container {
+    transform: none !important;
+  }
+
+  .magnetic-button {
+    transform: none !important;
+  }
+
+  .floating-card {
+    transform: none !important;
+  }
+
+  [data-motion] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+  }
+
+  [data-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .scroll-progress {
+    display: none !important;
+  }
+
+  .scroll-indicator {
+    display: none !important;
+  }
+}

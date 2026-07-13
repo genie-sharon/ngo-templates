@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+@import './tokens.css' layer(base);
+@import './base.css' layer(base);
+@import './keyframes.css' layer(utilities);
+@import './utilities.css' layer(utilities);
+@import './reduced-motion.css' layer(base);
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-50: var(--kindonar-color-primary-50);
+  --color-primary-100: var(--kindonar-color-primary-100);
+  --color-primary-200: var(--kindonar-color-primary-200);
+  --color-primary-300: var(--kindonar-color-primary-300);
+  --color-primary-400: var(--kindonar-color-primary-400);
+  --color-primary-500: var(--kindonar-color-primary-500);
+  --color-primary-600: var(--kindonar-color-primary-600);
+  --color-primary-700: var(--kindonar-color-primary-700);
+  --color-primary-800: var(--kindonar-color-primary-800);
+  --color-primary-900: var(--kindonar-color-primary-900);
+  --color-primary-950: var(--kindonar-color-primary-950);
+
+  --color-secondary-50: var(--kindonar-color-secondary-50);
+  --color-secondary-500: var(--kindonar-color-secondary-500);
+
+  --color-neutral-50: var(--kindonar-color-neutral-50);
+  --color-neutral-100: var(--kindonar-color-neutral-100);
+  --color-neutral-200: var(--kindonar-color-neutral-200);
+  --color-neutral-300: var(--kindonar-color-neutral-300);
+  --color-neutral-400: var(--kindonar-color-neutral-400);
+  --color-neutral-500: var(--kindonar-color-neutral-500);
+  --color-neutral-600: var(--kindonar-color-neutral-600);
+  --color-neutral-700: var(--kindonar-color-neutral-700);
+  --color-neutral-800: var(--kindonar-color-neutral-800);
+  --color-neutral-900: var(--kindonar-color-neutral-900);
+  --color-neutral-950: var(--kindonar-color-neutral-950);
+
+  --color-success: var(--kindonar-color-success-500);
+  --color-warning: var(--kindonar-color-warning-500);
+  --color-error: var(--kindonar-color-error-500);
+  --color-info: var(--kindonar-color-info-500);
+
+  --font-sans: var(--kindonar-font-body);
+  --font-heading: var(--kindonar-font-heading);
+  --font-mono: var(--kindonar-font-mono);
+
+  --radius-sm: var(--kindonar-radius-sm);
+  --radius-md: var(--kindonar-radius-md);
+  --radius-lg: var(--kindonar-radius-lg);
+  --radius-xl: var(--kindonar-radius-xl);
+  --radius-2xl: var(--kindonar-radius-2xl);
+  --radius-full: var(--kindonar-radius-full);
+
+  --shadow-sm: var(--kindonar-shadow-sm);
+  --shadow-md: var(--kindonar-shadow-md);
+  --shadow-lg: var(--kindonar-shadow-lg);
+  --shadow-xl: var(--kindonar-shadow-xl);
+}

@@ -1,0 +1,124 @@
+@layer base {
+  :root {
+    --kindonar-color-primary-50: #f0f0ff;
+    --kindonar-color-primary-100: #e0e0ff;
+    --kindonar-color-primary-200: #c4c4ff;
+    --kindonar-color-primary-300: #9e9eff;
+    --kindonar-color-primary-400: #7575ff;
+    --kindonar-color-primary-500: #5a5ae6;
+    --kindonar-color-primary-600: #4444cc;
+    --kindonar-color-primary-700: #3636a8;
+    --kindonar-color-primary-800: #2a2a80;
+    --kindonar-color-primary-900: #1e1e5a;
+    --kindonar-color-primary-950: #12123a;
+
+    --kindonar-color-secondary-50: #fff0ed;
+    --kindonar-color-secondary-100: #ffded6;
+    --kindonar-color-secondary-200: #fec4b8;
+    --kindonar-color-secondary-300: #fc9e8a;
+    --kindonar-color-secondary-400: #f8755a;
+    --kindonar-color-secondary-500: #ee5434;
+    --kindonar-color-secondary-600: #d93d1e;
+    --kindonar-color-secondary-700: #b52e15;
+    --kindonar-color-secondary-800: #962a18;
+    --kindonar-color-secondary-900: #7d271a;
+    --kindonar-color-secondary-950: #441006;
+
+    --kindonar-color-accent-50: #fffbea;
+    --kindonar-color-accent-500: #e2ad0e;
+
+    --kindonar-color-neutral-50: #faf9f7;
+    --kindonar-color-neutral-100: #f2f1ef;
+    --kindonar-color-neutral-200: #e6e4e1;
+    --kindonar-color-neutral-300: #d1cec9;
+    --kindonar-color-neutral-400: #aba7a1;
+    --kindonar-color-neutral-500: #8b8781;
+    --kindonar-color-neutral-600: #706c67;
+    --kindonar-color-neutral-700: #5b5853;
+    --kindonar-color-neutral-800: #3d3b37;
+    --kindonar-color-neutral-900: #292825;
+    --kindonar-color-neutral-950: #1a1917;
+
+    --kindonar-color-success-500: #1ea34c;
+    --kindonar-color-warning-500: #f59e0b;
+    --kindonar-color-error-500: #ef4444;
+    --kindonar-color-info-500: #3b82f6;
+
+    --kindonar-surface-base: #faf9f7;
+    --kindonar-surface-raised: #ffffff;
+    --kindonar-surface-overlay: #ffffff;
+    --kindonar-surface-inverse: #292825;
+    --kindonar-surface-interactive: #f2f1ef;
+    --kindonar-surface-selected: #f0f0ff;
+    --kindonar-surface-disabled: #f2f1ef;
+
+    --kindonar-border-default: #e6e4e1;
+    --kindonar-border-strong: #d1cec9;
+    --kindonar-border-focus: #5a5ae6;
+    --kindonar-border-error: #ef4444;
+
+    --kindonar-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --kindonar-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+    --kindonar-shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+    --kindonar-shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+    --kindonar-shadow-hover: 0 16px 32px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+
+    --kindonar-radius-sm: 0.25rem;
+    --kindonar-radius-md: 0.5rem;
+    --kindonar-radius-lg: 0.75rem;
+    --kindonar-radius-xl: 1rem;
+    --kindonar-radius-2xl: 1.5rem;
+    --kindonar-radius-full: 9999px;
+
+    --kindonar-spacing-1: 0.25rem;
+    --kindonar-spacing-2: 0.5rem;
+    --kindonar-spacing-3: 0.75rem;
+    --kindonar-spacing-4: 1rem;
+    --kindonar-spacing-5: 1.25rem;
+    --kindonar-spacing-6: 1.5rem;
+    --kindonar-spacing-8: 2rem;
+    --kindonar-spacing-10: 2.5rem;
+    --kindonar-spacing-12: 3rem;
+    --kindonar-spacing-16: 4rem;
+    --kindonar-spacing-20: 5rem;
+    --kindonar-spacing-24: 6rem;
+
+    --kindonar-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --kindonar-font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+    --kindonar-font-mono: 'JetBrains Mono', monospace;
+  }
+
+  .dark {
+    --kindonar-color-neutral-50: #1a1917;
+    --kindonar-color-neutral-100: #292825;
+    --kindonar-color-neutral-200: #3d3b37;
+    --kindonar-color-neutral-300: #5b5853;
+    --kindonar-color-neutral-400: #706c67;
+    --kindonar-color-neutral-500: #8b8781;
+    --kindonar-color-neutral-600: #aba7a1;
+    --kindonar-color-neutral-700: #d1cec9;
+    --kindonar-color-neutral-800: #e6e4e1;
+    --kindonar-color-neutral-900: #f2f1ef;
+    --kindonar-color-neutral-950: #faf9f7;
+
+    --kindonar-color-primary-500: #7575ff;
+
+    --kindonar-surface-base: #1a1917;
+    --kindonar-surface-raised: #292825;
+    --kindonar-surface-overlay: #3d3b37;
+    --kindonar-surface-inverse: #faf9f7;
+    --kindonar-surface-interactive: #3d3b37;
+    --kindonar-surface-selected: #12123a;
+    --kindonar-surface-disabled: #292825;
+
+    --kindonar-border-default: #3d3b37;
+    --kindonar-border-strong: #5b5853;
+    --kindonar-border-focus: #7575ff;
+
+    --kindonar-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+    --kindonar-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+    --kindonar-shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+    --kindonar-shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.45), 0 8px 16px rgba(0, 0, 0, 0.25);
+    --kindonar-shadow-hover: 0 16px 32px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}

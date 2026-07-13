@@ -1,0 +1,12 @@
+export { FooterColumns } from './footer-columns';
+export type { FooterColumnsProps, FooterColumn } from './footer-columns';
+export { Newsletter } from './newsletter';
+export type { NewsletterProps } from './newsletter';
+export { SocialLinks } from './social-links';
+export type { SocialLinksProps, SocialLink } from './social-links';
+export { ContactInfo } from './contact-info';
+export type { ContactInfoProps, ContactDetail } from './contact-info';
+export { QuickLinks } from './quick-links';
+export type { QuickLinksProps, QuickLink } from './quick-links';
+export { FooterBottom } from './footer-bottom';
+export type { FooterBottomProps } from './footer-bottom';
