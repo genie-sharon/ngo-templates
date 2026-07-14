@@ -6,8 +6,9 @@ import Link from 'next/link';
 import type { TemplateData } from '@/data/templates/types';
 import { TEMPLATE_PAGE_NAMES } from '@/data/templates/types';
 import { cn } from '@/lib/utils';
-import { TemplatePreview } from './template-preview';
+
 import { FeaturedTemplatePreview } from './featured-template-preview';
+import { TemplatePreview } from './template-preview';
 
 const templateAccents: Record<string, string> = {
   universal: 'from-blue-500 to-teal-500',
@@ -215,8 +216,7 @@ function useTemplateInfo(template: TemplateData) {
 }
 
 export function TemplateCard({ template, index = 0 }: { template: TemplateData; index?: number }) {
-  const { pageCount, badges, pageNames, hasMore } =
-    useTemplateInfo(template);
+  const { pageCount, badges, pageNames, hasMore } = useTemplateInfo(template);
 
   return (
     <motion.div
@@ -244,10 +244,10 @@ export function TemplateCard({ template, index = 0 }: { template: TemplateData; 
         />
 
         <div className="relative overflow-hidden rounded-t-2xl">
-            <div className="relative aspect-[16/10] overflow-hidden">
-              <div className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-105">
-                <TemplatePreview slug={template.slug} />
-              </div>
+          <div className="relative aspect-[16/10] overflow-hidden">
+            <div className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-105">
+              <TemplatePreview slug={template.slug} />
+            </div>
             <div className="absolute top-3 right-3 z-10 flex gap-1.5">
               {badges.slice(0, 3).map((badge) => {
                 const iconMap: Record<string, string> = {
@@ -341,7 +341,7 @@ export function TemplateCard({ template, index = 0 }: { template: TemplateData; 
               href={`/templates/${template.slug}`}
               className={cn(
                 'inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-300',
-                'bg-neutral-900 text-white hover:bg-neutral-800 group-hover:scale-[1.02] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200',
+                'bg-neutral-900 text-white group-hover:scale-[1.02] hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200',
               )}
             >
               <svg
@@ -362,7 +362,7 @@ export function TemplateCard({ template, index = 0 }: { template: TemplateData; 
               href={`/templates/${template.slug}`}
               className={cn(
                 'inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-300',
-                'border border-neutral-200 text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50 group-hover:border-neutral-300 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-800',
+                'border border-neutral-200 text-neutral-700 group-hover:border-neutral-300 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-800',
               )}
             >
               <svg
@@ -380,7 +380,6 @@ export function TemplateCard({ template, index = 0 }: { template: TemplateData; 
             </Link>
           </div>
         </div>
-
       </div>
     </motion.div>
   );

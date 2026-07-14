@@ -4,6 +4,8 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-
 import { Menu, X, Search, Globe, ChevronDown, ChevronRight } from 'lucide-react';
 import { useState, useRef, useCallback, useEffect, type KeyboardEvent } from 'react';
 
+import Link from 'next/link';
+
 import { Image } from '@/components/ui/media/image';
 import { cn } from '@/lib/utils';
 import { Button } from '@ui/atoms/button';
@@ -218,7 +220,7 @@ function DesktopDropdown({ item, isDark }: { item: NavigationMenuItem; isDark: b
 
   if (!hasMegaMenu && !hasChildren) {
     return (
-      <a
+      <Link
         href={item?.href ?? '#'}
         className={cn(
           'inline-flex items-center px-3 py-2 text-sm font-medium transition-colors',
@@ -234,7 +236,7 @@ function DesktopDropdown({ item, isDark }: { item: NavigationMenuItem; isDark: b
           </span>
         )}
         {item?.label ?? 'Link'}
-      </a>
+      </Link>
     );
   }
 
@@ -403,6 +405,8 @@ export function Navigation({ config }: { config?: NavigationConfig }) {
     safeLanguages[0] ?? { code: 'en', label: 'English' },
   );
   const [searchQuery, setSearchQuery] = useState('');
+  const searchQueryRef = useRef(searchQuery);
+  searchQueryRef.current = searchQuery;
   const searchInputRef = useRef<HTMLInputElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const langButtonRef = useRef<HTMLButtonElement>(null);
@@ -464,12 +468,12 @@ export function Navigation({ config }: { config?: NavigationConfig }) {
   const handleSearchSubmit = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
-      if (searchQuery.trim()) {
+      if (searchQueryRef.current.trim()) {
         setSearchOpen(false);
         setSearchQuery('');
       }
     },
-    [searchQuery],
+    [],
   );
 
   const handleLangSelect = useCallback((lang: { code: string; label: string }) => {
@@ -500,7 +504,7 @@ export function Navigation({ config }: { config?: NavigationConfig }) {
               layout === 'logo-center' && 'mx-4',
             )}
           >
-            <a
+            <Link
               href={logo?.href ?? '/'}
               className={cn(
                 'flex items-center gap-2 text-lg font-bold transition-colors',
@@ -514,7 +518,7 @@ export function Navigation({ config }: { config?: NavigationConfig }) {
                 <Image src={logo?.src} alt={logo?.alt ?? ''} fit="contain" className="h-8" />
               ) : null}
               {logo?.text && <span>{logo?.text}</span>}
-            </a>
+            </Link>
           </div>
 
           {(layout === 'logo-left' ||
@@ -677,7 +681,7 @@ export function Navigation({ config }: { config?: NavigationConfig }) {
             aria-label="Navigation menu"
           >
             <div className="flex items-center justify-between border-b px-4 py-4">
-              <a
+              <Link
                 href={logo?.href ?? '/'}
                 className={cn(
                   'flex items-center gap-2 text-lg font-bold',
@@ -689,7 +693,7 @@ export function Navigation({ config }: { config?: NavigationConfig }) {
                   <Image src={logo?.src} alt={logo?.alt ?? ''} fit="contain" className="h-7" />
                 ) : null}
                 {logo?.text && <span>{logo?.text}</span>}
-              </a>
+              </Link>
               <button
                 type="button"
                 onClick={closeMobileMenu}

@@ -100,6 +100,9 @@ export function ScrollRevealProgress({ className }: ScrollRevealProgressProps) {
 
   const progress = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.02, 0.98, 1], [1, 0, 0, 1]);
+  const strokeDashoffset = useTransform(scrollYProgress, [0, 1], [2 * Math.PI * 20, 0]);
+  const labelOpacity = useTransform(scrollYProgress, [0.05, 0.15], [0, 1]);
+  const progressLabel = useTransform(progress, (v) => `${Math.round(v)}%`);
 
   if (prefersReduced) return null;
 
@@ -131,16 +134,14 @@ export function ScrollRevealProgress({ className }: ScrollRevealProgressProps) {
           strokeLinecap="round"
           className="text-primary-500"
           strokeDasharray={2 * Math.PI * 20}
-          style={{
-            strokeDashoffset: useTransform(scrollYProgress, [0, 1], [2 * Math.PI * 20, 0]),
-          }}
+          style={{ strokeDashoffset }}
         />
       </svg>
       <motion.span
         className="absolute text-[10px] font-semibold text-neutral-600 dark:text-neutral-400"
-        style={{ opacity: useTransform(scrollYProgress, [0.05, 0.15], [0, 1]) }}
+        style={{ opacity: labelOpacity }}
       >
-        {useTransform(progress, (v) => `${Math.round(v)}%`)}
+        {progressLabel}
       </motion.span>
     </motion.div>
   );

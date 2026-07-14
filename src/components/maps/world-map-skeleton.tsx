@@ -24,12 +24,7 @@ export function WorldMapSkeleton({ className }: { className?: string }) {
           </linearGradient>
         </defs>
         <rect width="900" height="500" fill="url(#shimmer)">
-          <animate
-            attributeName="opacity"
-            values="0.6;1;0.6"
-            dur="1.5s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite" />
         </rect>
       </svg>
       <span className="sr-only">Loading map...</span>

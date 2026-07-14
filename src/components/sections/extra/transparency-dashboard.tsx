@@ -42,7 +42,6 @@ export function TransparencyDashboardSection({
   const safeAllocations = Array.isArray(allocations) ? allocations : [];
   const safeStats = Array.isArray(stats) ? stats : [];
   const total = safeAllocations.reduce((sum, a) => sum + a.percentage, 0);
-  let cumulative = 0;
 
   return (
     <section
@@ -82,13 +81,14 @@ export function TransparencyDashboardSection({
                 aria-label="Fund allocation breakdown"
               >
                 {safeAllocations.map((item, idx) => {
-                  const offset = cumulative;
+                  const prevCumulative = safeAllocations
+                    .slice(0, idx)
+                    .reduce((sum, a) => sum + (a.percentage / total) * 100, 0);
                   const length = (item.percentage / total) * 100;
-                  cumulative += length;
                   const r = 40;
                   const circ = 2 * Math.PI * r;
                   const dashLen = (length / 100) * circ;
-                  const dashOff = (offset / 100) * circ;
+                  const dashOff = (prevCumulative / 100) * circ;
                   return (
                     <circle
                       key={idx}

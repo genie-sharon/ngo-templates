@@ -58,7 +58,7 @@ export function AnimatedCounter({
       } else {
         springValue.set(to);
       }
-      setHasAnimated(true);
+      requestAnimationFrame(() => setHasAnimated(true));
     }
   }, [isInView, autoStart, hasAnimated, prefersReduced, springValue, to]);
 

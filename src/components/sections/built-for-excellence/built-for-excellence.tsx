@@ -58,7 +58,14 @@ function PerformanceIllustration() {
       <div className="flex w-full max-w-[220px] items-center gap-3">
         <div className="relative flex h-16 w-16 shrink-0 items-center justify-center">
           <svg className="absolute inset-0 h-16 w-16 -rotate-90" viewBox="0 0 64 64">
-            <circle cx="32" cy="32" r="28" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="4" />
+            <circle
+              cx="32"
+              cy="32"
+              r="28"
+              fill="none"
+              stroke="rgba(255,255,255,0.08)"
+              strokeWidth="4"
+            />
             <circle
               cx="32"
               cy="32"
@@ -80,7 +87,13 @@ function PerformanceIllustration() {
         </div>
         <div className="flex-1 space-y-2">
           <div className="flex items-center gap-1.5">
-            <svg className="h-3.5 w-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg
+              className="h-3.5 w-3.5 text-emerald-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
               <path d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
             <span className="text-[9px] font-semibold text-emerald-400">98 Lighthouse</span>
@@ -111,8 +124,15 @@ function AccessibilityIllustration() {
       <div className="w-full max-w-[220px] space-y-2">
         <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 p-2">
           <div className="flex h-5 w-5 items-center justify-center rounded bg-blue-500/30">
-            <svg className="h-3 w-3 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <circle cx="12" cy="12" r="10" /><path d="M12 8v4m0 4h.01" />
+            <svg
+              className="h-3 w-3 text-blue-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4m0 4h.01" />
             </svg>
           </div>
           <span className="text-[8px] font-medium text-blue-300">Screen Reader Ready</span>
@@ -121,7 +141,11 @@ function AccessibilityIllustration() {
           {['Keyboard Navigation', 'ARIA Labels', 'Focus Management', 'Reduced Motion'].map(
             (item) => (
               <div key={item} className="flex items-center gap-1.5">
-                <svg className="h-2.5 w-2.5 shrink-0 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="h-2.5 w-2.5 shrink-0 text-emerald-400"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
                 </svg>
                 <span className="text-[7px] text-white/60">{item}</span>
@@ -149,8 +173,15 @@ function SEOIllustration() {
     <div className="flex h-full w-full items-center justify-center p-4">
       <div className="w-full max-w-[220px] space-y-2">
         <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 p-2">
-          <svg className="h-3 w-3 shrink-0 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
+          <svg
+            className="h-3 w-3 shrink-0 text-orange-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35" />
           </svg>
           <div className="h-2 flex-1 rounded bg-white/15" />
         </div>
@@ -209,7 +240,9 @@ function AnalyticsIllustration() {
           {['Visitors', 'Page Views', 'Bounce'].map((label, i) => (
             <div key={label} className="rounded border border-white/10 bg-white/5 p-1.5">
               <div className="text-[6px] text-white/40">{label}</div>
-              <div className={cn('text-[9px] font-bold', i === 0 ? 'text-blue-400' : 'text-white/60')}>
+              <div
+                className={cn('text-[9px] font-bold', i === 0 ? 'text-blue-400' : 'text-white/60')}
+              >
                 {['12.4K', '45.2K', '24%'][i]}
               </div>
             </div>
@@ -265,7 +298,13 @@ function ArchitectureIllustration() {
         </div>
         <div className="flex items-center gap-1">
           <div className="h-px flex-1 bg-white/10" />
-          <svg className="h-3 w-3 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg
+            className="h-3 w-3 text-indigo-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
             <path d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
           <div className="h-px flex-1 bg-white/10" />
@@ -295,7 +334,13 @@ function CrowderaIllustration() {
         <div className="relative flex h-14 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-white/5">
           <svg className="absolute h-12 w-full" viewBox="0 0 200 48" fill="none">
             {[
-              [30, 24], [55, 18], [80, 30], [105, 14], [130, 26], [155, 20], [180, 28],
+              [30, 24],
+              [55, 18],
+              [80, 30],
+              [105, 14],
+              [130, 26],
+              [155, 20],
+              [180, 28],
             ].map(([cx, cy], i) => (
               <g key={i}>
                 <circle cx={cx} cy={cy} r="2.5" className="fill-green-400/60" />
@@ -325,8 +370,15 @@ function CrowderaIllustration() {
         </div>
         <div className="grid grid-cols-2 gap-1">
           {['One-Click Deploy', 'Crowdera Hosted', 'Custom Domain', 'Free SSL'].map((item) => (
-            <div key={item} className="flex items-center gap-1 rounded border border-white/5 bg-white/[0.03] px-1.5 py-1">
-              <svg className="h-2 w-2 shrink-0 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+            <div
+              key={item}
+              className="flex items-center gap-1 rounded border border-white/5 bg-white/[0.03] px-1.5 py-1"
+            >
+              <svg
+                className="h-2 w-2 shrink-0 text-green-400"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
               </svg>
               <span className="text-[6px] text-white/50">{item}</span>
@@ -344,7 +396,16 @@ function CertifiedIllustration() {
       <div className="flex w-full max-w-[220px] items-center gap-3">
         <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/20 to-rose-500/20">
           <svg className="absolute inset-0 h-14 w-14" viewBox="0 0 56 56">
-            <rect x="4" y="4" width="48" height="48" rx="12" fill="none" stroke="rgba(245,158,11,0.3)" strokeWidth="1" />
+            <rect
+              x="4"
+              y="4"
+              width="48"
+              height="48"
+              rx="12"
+              fill="none"
+              stroke="rgba(245,158,11,0.3)"
+              strokeWidth="1"
+            />
             <path
               d="M28 12 L31.5 20 L40 21 L33.5 27.5 L35.5 36 L28 31.5 L20.5 36 L22.5 27.5 L16 21 L24.5 20 Z"
               fill="rgba(245,158,11,0.2)"
@@ -358,7 +419,12 @@ function CertifiedIllustration() {
           <div className="text-[8px] font-bold text-amber-300">WCAG 2.2 AA Certified</div>
           <div className="flex gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
-              <svg key={i} className="h-2.5 w-2.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+              <svg
+                key={i}
+                className="h-2.5 w-2.5 text-amber-400"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             ))}
@@ -387,11 +453,7 @@ const FEATURES: FeatureCardData[] = [
     color: '#a855f7',
     glowColor: 'rgba(168,85,247,0.15)',
     borderColor: 'rgba(168,85,247,0.3)',
-    pills: [
-      { label: '10 Design Systems' },
-      { label: 'Custom Typography' },
-      { label: 'Dark Mode' },
-    ],
+    pills: [{ label: '10 Design Systems' }, { label: 'Custom Typography' }, { label: 'Dark Mode' }],
     illustration: <PremiumDesignIllustration />,
   },
   {
@@ -401,11 +463,7 @@ const FEATURES: FeatureCardData[] = [
     color: '#10b981',
     glowColor: 'rgba(16,185,129,0.15)',
     borderColor: 'rgba(16,185,129,0.3)',
-    pills: [
-      { label: 'Lighthouse 95+' },
-      { label: 'Next.js 16' },
-      { label: 'Lazy Loading' },
-    ],
+    pills: [{ label: 'Lighthouse 95+' }, { label: 'Next.js 16' }, { label: 'Lazy Loading' }],
     illustration: <PerformanceIllustration />,
   },
   {
@@ -415,11 +473,7 @@ const FEATURES: FeatureCardData[] = [
     color: '#3b82f6',
     glowColor: 'rgba(59,130,246,0.15)',
     borderColor: 'rgba(59,130,246,0.3)',
-    pills: [
-      { label: 'WCAG 2.2 AA' },
-      { label: 'ARIA Labels' },
-      { label: 'Keyboard Nav' },
-    ],
+    pills: [{ label: 'WCAG 2.2 AA' }, { label: 'ARIA Labels' }, { label: 'Keyboard Nav' }],
     illustration: <AccessibilityIllustration />,
   },
   {
@@ -429,11 +483,7 @@ const FEATURES: FeatureCardData[] = [
     color: '#f59e0b',
     glowColor: 'rgba(245,158,11,0.15)',
     borderColor: 'rgba(245,158,11,0.3)',
-    pills: [
-      { label: 'Open Graph' },
-      { label: 'Structured Data' },
-      { label: 'Sitemaps' },
-    ],
+    pills: [{ label: 'Open Graph' }, { label: 'Structured Data' }, { label: 'Sitemaps' }],
     illustration: <SEOIllustration />,
   },
   {
@@ -443,11 +493,7 @@ const FEATURES: FeatureCardData[] = [
     color: '#3b82f6',
     glowColor: 'rgba(59,130,246,0.15)',
     borderColor: 'rgba(59,130,246,0.3)',
-    pills: [
-      { label: 'GDPR Ready' },
-      { label: 'Cookie Consent' },
-      { label: 'Dashboard' },
-    ],
+    pills: [{ label: 'GDPR Ready' }, { label: 'Cookie Consent' }, { label: 'Dashboard' }],
     illustration: <AnalyticsIllustration />,
   },
   {
@@ -457,11 +503,7 @@ const FEATURES: FeatureCardData[] = [
     color: '#6366f1',
     glowColor: 'rgba(99,102,241,0.15)',
     borderColor: 'rgba(99,102,241,0.3)',
-    pills: [
-      { label: '40+ Components' },
-      { label: 'Reusable' },
-      { label: 'TypeScript' },
-    ],
+    pills: [{ label: '40+ Components' }, { label: 'Reusable' }, { label: 'TypeScript' }],
     illustration: <ArchitectureIllustration />,
   },
   {
@@ -471,11 +513,7 @@ const FEATURES: FeatureCardData[] = [
     color: '#22c55e',
     glowColor: 'rgba(34,197,94,0.15)',
     borderColor: 'rgba(34,197,94,0.3)',
-    pills: [
-      { label: 'One-Click Deploy' },
-      { label: 'Custom Domain' },
-      { label: 'Free SSL' },
-    ],
+    pills: [{ label: 'One-Click Deploy' }, { label: 'Custom Domain' }, { label: 'Free SSL' }],
     illustration: <CrowderaIllustration />,
   },
   {
@@ -485,11 +523,7 @@ const FEATURES: FeatureCardData[] = [
     color: '#ec4899',
     glowColor: 'rgba(236,72,153,0.15)',
     borderColor: 'rgba(236,72,153,0.3)',
-    pills: [
-      { label: 'Certified' },
-      { label: 'Screen Reader' },
-      { label: 'Contrast AAA' },
-    ],
+    pills: [{ label: 'Certified' }, { label: 'Screen Reader' }, { label: 'Contrast AAA' }],
     illustration: <CertifiedIllustration />,
   },
 ];
@@ -513,11 +547,7 @@ const itemVariants = {
 
 function FeatureCard({ feature, index }: { feature: FeatureCardData; index: number }) {
   return (
-    <motion.div
-      variants={itemVariants}
-      custom={index}
-      className="group"
-    >
+    <motion.div variants={itemVariants} custom={index} className="group">
       <div
         className={cn(
           'relative overflow-hidden rounded-2xl border p-0 transition-all duration-500',
@@ -567,13 +597,11 @@ function FeatureCard({ feature, index }: { feature: FeatureCardData; index: numb
           {feature.illustration}
         </div>
 
-        <div className="relative space-y-3 px-5 pb-5 pt-3 sm:px-6 sm:pb-6">
+        <div className="relative space-y-3 px-5 pt-3 pb-5 sm:px-6 sm:pb-6">
           <h3 className="text-base font-bold tracking-tight text-white sm:text-lg">
             {feature.title}
           </h3>
-          <p className="text-sm leading-relaxed text-white/60">
-            {feature.description}
-          </p>
+          <p className="text-sm leading-relaxed text-white/60">{feature.description}</p>
 
           <div className="flex flex-wrap gap-1.5 pt-1">
             {feature.pills.map((pill) => (
@@ -619,7 +647,7 @@ function FloatingOrbs() {
       <div className="absolute top-[10%] left-[5%] h-72 w-72 rounded-full bg-purple-500/10 blur-[100px]" />
       <div className="absolute top-[30%] right-[10%] h-96 w-96 rounded-full bg-blue-500/8 blur-[120px]" />
       <div className="absolute bottom-[20%] left-[15%] h-64 w-64 rounded-full bg-cyan-500/8 blur-[90px]" />
-      <div className="absolute bottom-[10%] right-[20%] h-80 w-80 rounded-full bg-pink-500/8 blur-[110px]" />
+      <div className="absolute right-[20%] bottom-[10%] h-80 w-80 rounded-full bg-pink-500/8 blur-[110px]" />
       <div className="absolute top-[50%] left-[40%] h-56 w-56 rounded-full bg-emerald-500/6 blur-[80px]" />
     </div>
   );
@@ -684,9 +712,21 @@ function Sparkles() {
     <div className="pointer-events-none absolute inset-0 select-none" aria-hidden="true">
       <svg className="h-full w-full" viewBox="0 0 1200 800" fill="none">
         {[
-          [150, 100], [350, 80], [550, 120], [750, 70], [950, 110],
-          [1100, 90], [200, 350], [500, 330], [800, 360], [1000, 340],
-          [300, 600], [600, 580], [900, 610], [100, 500], [1100, 550],
+          [150, 100],
+          [350, 80],
+          [550, 120],
+          [750, 70],
+          [950, 110],
+          [1100, 90],
+          [200, 350],
+          [500, 330],
+          [800, 360],
+          [1000, 340],
+          [300, 600],
+          [600, 580],
+          [900, 610],
+          [100, 500],
+          [1100, 550],
         ].map(([cx, cy], i) => (
           <g key={i} className="animate-pulse" style={{ animationDelay: `${i * 0.3}s` }}>
             <circle cx={cx} cy={cy} r="1.5" fill="white" opacity="0.3" />
@@ -701,15 +741,19 @@ function Sparkles() {
 export function BuiltForExcellence() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-28 lg:py-32">
-      <div className="bg-neutral-950 absolute inset-0" />
+      <div className="absolute inset-0 bg-neutral-950" />
       <FloatingOrbs />
       <GridPattern />
       <ConnectionLines />
       <Sparkles />
 
-      <div className="absolute inset-0" style={{
-        background: 'radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.06) 0%, transparent 60%)',
-      }} />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.06) 0%, transparent 60%)',
+        }}
+      />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -739,9 +783,7 @@ export function BuiltForExcellence() {
           >
             <span className="text-white">Everything You Need</span>
             <br />
-            <span
-              className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent"
-            >
+            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
               To Launch a Professional NGO Website
             </span>
           </motion.h2>

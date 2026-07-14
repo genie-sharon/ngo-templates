@@ -21,10 +21,10 @@ export function MotionProvider({ children }: MotionProviderProps) {
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mq.matches);
+    requestAnimationFrame(() => setPrefersReducedMotion(mq.matches));
 
     const handler = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches);
+      requestAnimationFrame(() => setPrefersReducedMotion(event.matches));
     };
 
     mq.addEventListener('change', handler);

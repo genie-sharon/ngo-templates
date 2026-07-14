@@ -157,6 +157,85 @@ function ContactInfo({ config }: { config: ContactPageConfig }) {
   );
 }
 
+function FormField({
+  field,
+  register,
+  errors,
+}: {
+  field: ContactFormField;
+  register: any;
+  errors: any;
+}) {
+  const fieldError = errors[field.name]?.message as string | undefined;
+  const commonProps = {
+    id: field.name,
+    label: field.label,
+    placeholder: field.placeholder,
+    required: field.required,
+    error: fieldError,
+    ...register(field.name, {
+      required: field.required ? `${field.label} is required` : false,
+      ...(field.type === 'email'
+        ? {
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: 'Invalid email address',
+            },
+          }
+        : {}),
+    }),
+  };
+
+  if (field.type === 'textarea') {
+    return <Textarea key={field.name} {...commonProps} rows={5} />;
+  }
+
+  if (field.type === 'select' && field.options) {
+    return (
+      <div key={field.name} className="space-y-1.5">
+        {field.label && (
+          <label
+            htmlFor={field.name}
+            className="text-sm font-medium text-[var(--kindonar-color-neutral-800)]"
+          >
+            {field.label}
+            {field.required && (
+              <span className="ml-0.5 text-[var(--kindonar-color-error-500)]">*</span>
+            )}
+          </label>
+        )}
+        <select
+          id={field.name}
+          {...register(field.name, {
+            required: field.required ? `${field.label} is required` : false,
+          })}
+          className="flex w-full rounded-md border border-[var(--kindonar-border-default)] bg-[var(--kindonar-surface-raised)] px-3 py-2 text-sm text-[var(--kindonar-color-neutral-900)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--kindonar-border-focus)] focus-visible:outline-none"
+        >
+          <option value="">Select {field.label.toLowerCase()}</option>
+          {field.options.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+        {fieldError && (
+          <p className="text-xs text-[var(--kindonar-color-error-500)]" role="alert">
+            {fieldError}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <Input
+      key={field.name}
+      type={field.type === 'tel' ? 'tel' : field.type === 'email' ? 'email' : 'text'}
+      {...commonProps}
+    />
+  );
+}
+
 function ContactForm({ config }: { config: ContactPageConfig }) {
   const {
     register,
@@ -170,7 +249,7 @@ function ContactForm({ config }: { config: ContactPageConfig }) {
   const onSubmit = async (data: FormValues) => {
     setSubmitError(null);
     if (config.formSubmitEmail) {
-      window.location.href = `mailto:${config.formSubmitEmail}?subject=${encodeURIComponent('Contact Form Submission')}&body=${encodeURIComponent(JSON.stringify(data, null, 2))}`;
+      window.location.assign(`mailto:${config.formSubmitEmail}?subject=${encodeURIComponent('Contact Form Submission')}&body=${encodeURIComponent(JSON.stringify(data, null, 2))}`);
       reset();
       return;
     }
@@ -191,76 +270,9 @@ function ContactForm({ config }: { config: ContactPageConfig }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-      {config.formFields.map((field) => {
-        const fieldError = errors[field.name]?.message as string | undefined;
-        const commonProps = {
-          id: field.name,
-          label: field.label,
-          placeholder: field.placeholder,
-          required: field.required,
-          error: fieldError,
-          ...register(field.name, {
-            required: field.required ? `${field.label} is required` : false,
-            ...(field.type === 'email'
-              ? {
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: 'Invalid email address',
-                  },
-                }
-              : {}),
-          }),
-        };
-
-        if (field.type === 'textarea') {
-          return <Textarea key={field.name} {...commonProps} rows={5} />;
-        }
-
-        if (field.type === 'select' && field.options) {
-          return (
-            <div key={field.name} className="space-y-1.5">
-              {field.label && (
-                <label
-                  htmlFor={field.name}
-                  className="text-sm font-medium text-[var(--kindonar-color-neutral-800)]"
-                >
-                  {field.label}
-                  {field.required && (
-                    <span className="ml-0.5 text-[var(--kindonar-color-error-500)]">*</span>
-                  )}
-                </label>
-              )}
-              <select
-                id={field.name}
-                {...register(field.name, {
-                  required: field.required ? `${field.label} is required` : false,
-                })}
-                className="flex w-full rounded-md border border-[var(--kindonar-border-default)] bg-[var(--kindonar-surface-raised)] px-3 py-2 text-sm text-[var(--kindonar-color-neutral-900)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--kindonar-border-focus)] focus-visible:outline-none"
-              >
-                <option value="">Select {field.label.toLowerCase()}</option>
-                {field.options.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
-              {fieldError && (
-                <p className="text-xs text-[var(--kindonar-color-error-500)]" role="alert">
-                  {fieldError}
-                </p>
-              )}
-            </div>
-          );
-        }
-
-        return (
-          <Input
-            key={field.name}
-            type={field.type === 'tel' ? 'tel' : field.type === 'email' ? 'email' : 'text'}
-            {...commonProps}
-          />
-        );
-      })}
+      {config.formFields.map((field) => (
+        <FormField key={field.name} field={field} register={register} errors={errors} />
+      ))}
 
       {submitError && (
         <div

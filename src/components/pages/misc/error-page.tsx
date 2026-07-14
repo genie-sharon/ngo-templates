@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { RefreshCw, Home, AlertTriangle } from 'lucide-react';
 
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/atoms/button';
 
 export interface SuggestedLink {
@@ -98,10 +100,10 @@ export function ErrorPage({ config }: { config: ErrorConfig }) {
             {retryCta}
           </Button>
           <Button variant="outline" asChild>
-            <a href="/">
+            <Link href="/">
               <Home className="h-4 w-4" />
               Back to Home
-            </a>
+            </Link>
           </Button>
         </motion.div>
 

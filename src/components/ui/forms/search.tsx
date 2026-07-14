@@ -8,23 +8,12 @@ import { cn } from '@/lib/utils';
 
 import { Input, type InputProps } from './input';
 
-const searchVariants = cva('', {
-  variants: {
-    size: {
-      sm: '',
-      md: '',
-      lg: '',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-});
+export interface SearchVariants {
+  size?: 'sm' | 'md' | 'lg';
+}
 
 export interface SearchProps
-  extends
-    Omit<InputProps, 'leftIcon' | 'rightIcon' | 'type' | 'onSubmit'>,
-    VariantProps<typeof searchVariants> {
+  extends Omit<InputProps, 'leftIcon' | 'rightIcon' | 'type' | 'onSubmit'>, SearchVariants {
   onClear?: () => void;
   onSubmit?: (value: string) => void;
 }

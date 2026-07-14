@@ -124,7 +124,7 @@ function CarouselLayout({ partners }: { partners: PartnerItem[] }) {
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on('select', onSelect);
-    onSelect();
+    requestAnimationFrame(() => onSelect());
     return () => {
       emblaApi.off('select', onSelect);
     };

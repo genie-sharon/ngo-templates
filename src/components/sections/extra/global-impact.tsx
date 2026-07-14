@@ -1,6 +1,5 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { motion, useInView } from 'framer-motion';
 import {
   Globe,
@@ -13,6 +12,7 @@ import {
   ChevronRight,
   Sparkles,
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { useMemo, useRef } from 'react';
 
 import { WorldMapSkeleton } from '@/components/maps/world-map-skeleton';
@@ -63,15 +63,7 @@ const defaultIcons: Record<string, React.ReactNode> = {
   health: <Heart size={22} />,
 };
 
-function CountUp({
-  value,
-  suffix,
-  prefix,
-}: {
-  value: number;
-  suffix?: string;
-  prefix?: string;
-}) {
+function CountUp({ value, suffix, prefix }: { value: number; suffix?: string; prefix?: string }) {
   return (
     <span>
       {prefix}
@@ -81,13 +73,7 @@ function CountUp({
   );
 }
 
-function AnimatedStatCard({
-  stat,
-  index,
-}: {
-  stat: GlobalStat;
-  index: number;
-}) {
+function AnimatedStatCard({ stat, index }: { stat: GlobalStat; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
 
@@ -111,7 +97,7 @@ function AnimatedStatCard({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="group relative overflow-hidden rounded-xl border border-gray-200/80 bg-white p-5 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_10px_40px_-8px_rgba(0,0,0,0.12)] hover:-translate-y-0.5"
+      className="group relative overflow-hidden rounded-xl border border-gray-200/80 bg-white p-5 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_-8px_rgba(0,0,0,0.12)]"
     >
       <div className="flex items-center gap-4">
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
@@ -218,7 +204,7 @@ export function GlobalImpactSection({
             </div>
 
             <div className="mt-6">
-              <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold tracking-wider uppercase text-gray-500">
+              <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold tracking-wider text-gray-500 uppercase">
                 <AwardIcon />
                 Top Impact Countries
               </h3>
@@ -226,8 +212,16 @@ export function GlobalImpactSection({
                 {topCountries.map((c, i) => {
                   const cardColors: Array<{ border: string; bg: string; accent: string }> = [
                     { border: 'border-blue-200', bg: 'bg-blue-50/50', accent: 'text-blue-600' },
-                    { border: 'border-emerald-200', bg: 'bg-emerald-50/50', accent: 'text-emerald-600' },
-                    { border: 'border-violet-200', bg: 'bg-violet-50/50', accent: 'text-violet-600' },
+                    {
+                      border: 'border-emerald-200',
+                      bg: 'bg-emerald-50/50',
+                      accent: 'text-emerald-600',
+                    },
+                    {
+                      border: 'border-violet-200',
+                      bg: 'bg-violet-50/50',
+                      accent: 'text-violet-600',
+                    },
                     { border: 'border-amber-200', bg: 'bg-amber-50/50', accent: 'text-amber-600' },
                   ] as const;
                   const color = cardColors[i % cardColors.length]!;
@@ -239,7 +233,7 @@ export function GlobalImpactSection({
                       whileInView="visible"
                       viewport={{ once: true }}
                       className={cn(
-                        'group relative overflow-hidden rounded-xl border bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1',
+                        'group relative overflow-hidden rounded-xl border bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg',
                         color.border,
                       )}
                     >
@@ -308,7 +302,7 @@ export function GlobalImpactSection({
               viewport={{ once: true }}
               className="rounded-xl border border-gray-200/80 bg-white p-5 shadow-sm"
             >
-              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold tracking-wider uppercase text-gray-500">
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold tracking-wider text-gray-500 uppercase">
                 <MapPin size={14} />
                 Country Presence
               </h4>
@@ -322,11 +316,7 @@ export function GlobalImpactSection({
                       <span
                         className={cn(
                           'flex h-2 w-2 shrink-0 rounded-full',
-                          i < 3
-                            ? 'bg-emerald-500'
-                            : i < 6
-                              ? 'bg-blue-500'
-                              : 'bg-gray-300',
+                          i < 3 ? 'bg-emerald-500' : i < 6 ? 'bg-blue-500' : 'bg-gray-300',
                         )}
                         aria-hidden="true"
                       />
@@ -356,7 +346,17 @@ export function GlobalImpactSection({
 
 function AwardIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <circle cx="12" cy="8" r="6" />
       <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
     </svg>

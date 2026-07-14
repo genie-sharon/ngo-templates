@@ -28,7 +28,7 @@ function Counter({
 
   useEffect(() => {
     if (!isInView) return;
-    setCount(0);
+    requestAnimationFrame(() => setCount(0));
     const start = performance.now();
     const frame = (now: number) => {
       const elapsed = (now - start) / 1000;

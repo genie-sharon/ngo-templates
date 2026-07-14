@@ -1,15 +1,9 @@
 'use client';
 
-import { useMemo, useState, useCallback } from 'react';
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  Marker,
-  ZoomableGroup,
-} from 'react-simple-maps';
-
 import { MapPin } from 'lucide-react';
+import { useMemo, useState, useCallback } from 'react';
+import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps';
+
 import type { CountryPresence } from '@/components/sections/extra/global-impact';
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
@@ -138,7 +132,10 @@ export function WorldMapClient({ countries }: { countries: CountryPresence[] }) 
     [countries],
   );
 
-  const projectionConfig = useMemo(() => ({ scale: 140, center: [20, 20] as [number, number] }), []);
+  const projectionConfig = useMemo(
+    () => ({ scale: 140, center: [20, 20] as [number, number] }),
+    [],
+  );
 
   const handleMouseEnter = useCallback(
     (geo: any, evt: React.MouseEvent) => {
@@ -205,12 +202,7 @@ export function WorldMapClient({ countries }: { countries: CountryPresence[] }) 
             <Marker key={marker.country} coordinates={marker.coords}>
               <g>
                 <circle r={10} fill="none" stroke="#2563EB" strokeWidth={1.5} opacity={0.4}>
-                  <animate
-                    attributeName="r"
-                    values="6;14;6"
-                    dur="2s"
-                    repeatCount="indefinite"
-                  />
+                  <animate attributeName="r" values="6;14;6" dur="2s" repeatCount="indefinite" />
                   <animate
                     attributeName="opacity"
                     values="0.6;0;0.6"

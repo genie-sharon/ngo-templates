@@ -3,7 +3,20 @@
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight, Users, Heart, Droplets, GraduationCap, Utensils, Building2, Shield, Stethoscope, Leaf } from 'lucide-react';
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Users,
+  Heart,
+  Droplets,
+  GraduationCap,
+  Utensils,
+  Building2,
+  Shield,
+  Stethoscope,
+  Leaf,
+} from 'lucide-react';
 import { useState, useCallback, type ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -79,27 +92,72 @@ const CATEGORY_IMAGES: Record<string, string[]> = {
 };
 
 const CATEGORY_COLORS: Record<string, { badge: string; chip: string }> = {
-  Healthcare: { badge: 'bg-emerald-500', chip: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300' },
-  Health: { badge: 'bg-emerald-500', chip: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300' },
-  Education: { badge: 'bg-blue-500', chip: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' },
-  Protection: { badge: 'bg-indigo-500', chip: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300' },
-  WASH: { badge: 'bg-cyan-500', chip: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300' },
-  Relief: { badge: 'bg-orange-500', chip: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300' },
-  Empowerment: { badge: 'bg-violet-500', chip: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300' },
-  'Food Security': { badge: 'bg-amber-500', chip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300' },
-  Nutrition: { badge: 'bg-yellow-500', chip: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300' },
-  Climate: { badge: 'bg-emerald-600', chip: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300' },
-  'Emergency Healthcare': { badge: 'bg-red-500', chip: 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300' },
-  Livelihood: { badge: 'bg-teal-500', chip: 'bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300' },
-  'Women Empowerment': { badge: 'bg-pink-500', chip: 'bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300' },
-  'Child Protection': { badge: 'bg-rose-500', chip: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300' },
-  'Disaster Relief': { badge: 'bg-orange-500', chip: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300' },
+  Healthcare: {
+    badge: 'bg-emerald-500',
+    chip: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+  },
+  Health: {
+    badge: 'bg-emerald-500',
+    chip: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+  },
+  Education: {
+    badge: 'bg-blue-500',
+    chip: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+  },
+  Protection: {
+    badge: 'bg-indigo-500',
+    chip: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300',
+  },
+  WASH: {
+    badge: 'bg-cyan-500',
+    chip: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300',
+  },
+  Relief: {
+    badge: 'bg-orange-500',
+    chip: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
+  },
+  Empowerment: {
+    badge: 'bg-violet-500',
+    chip: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
+  },
+  'Food Security': {
+    badge: 'bg-amber-500',
+    chip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+  },
+  Nutrition: {
+    badge: 'bg-yellow-500',
+    chip: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300',
+  },
+  Climate: {
+    badge: 'bg-emerald-600',
+    chip: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+  },
+  'Emergency Healthcare': {
+    badge: 'bg-red-500',
+    chip: 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300',
+  },
+  Livelihood: {
+    badge: 'bg-teal-500',
+    chip: 'bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300',
+  },
+  'Women Empowerment': {
+    badge: 'bg-pink-500',
+    chip: 'bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300',
+  },
+  'Child Protection': {
+    badge: 'bg-rose-500',
+    chip: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300',
+  },
+  'Disaster Relief': {
+    badge: 'bg-orange-500',
+    chip: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
+  },
 };
 
 function hashCode(str: string): number {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
-    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash = (hash << 5) - hash + str.charCodeAt(i);
     hash |= 0;
   }
   return hash;
@@ -126,7 +184,12 @@ function getProgramImage(program: ProgramCard): { src: string; alt: string } {
 }
 
 function getCategoryColors(category: string): { badge: string; chip: string } {
-  return CATEGORY_COLORS[category] || { badge: 'bg-blue-500', chip: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' };
+  return (
+    CATEGORY_COLORS[category] || {
+      badge: 'bg-blue-500',
+      chip: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+    }
+  );
 }
 
 function getProgramHref(program: ProgramCard): string {
@@ -134,16 +197,44 @@ function getProgramHref(program: ProgramCard): string {
   return `${base}/programs/${program.id}`;
 }
 
-function ProgramImage({ src, alt, priority = false, className }: { src: string; alt: string; priority?: boolean; className?: string }) {
+function ProgramImage({
+  src,
+  alt,
+  priority = false,
+  className,
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+  className?: string;
+}) {
   const [error, setError] = useState(false);
 
   if (error) {
     return (
-      <div className={cn('flex items-center justify-center bg-neutral-200 dark:bg-neutral-800', className)}>
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-neutral-400" aria-hidden="true">
+      <div
+        className={cn(
+          'flex items-center justify-center bg-neutral-200 dark:bg-neutral-800',
+          className,
+        )}
+      >
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          className="text-neutral-400"
+          aria-hidden="true"
+        >
           <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
           <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
-          <path d="M21 15l-5-5L5 21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M21 15l-5-5L5 21"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </div>
     );
@@ -163,16 +254,31 @@ function ProgramImage({ src, alt, priority = false, className }: { src: string; 
 function ImpactIcon({ category }: { category: string }) {
   const iconClass = 'h-3.5 w-3.5 shrink-0';
   switch (category.toLowerCase()) {
-    case 'healthcare': case 'health': case 'nutrition': return <Heart className={iconClass} />;
-    case 'education': return <GraduationCap className={iconClass} />;
-    case 'protection': return <Shield className={iconClass} />;
-    case 'wash': return <Droplets className={iconClass} />;
-    case 'relief': case 'disaster relief': return <Building2 className={iconClass} />;
-    case 'empowerment': case 'women empowerment': case 'livelihood': return <Users className={iconClass} />;
-    case 'food security': return <Utensils className={iconClass} />;
-    case 'climate': return <Leaf className={iconClass} />;
-    case 'emergency healthcare': return <Stethoscope className={iconClass} />;
-    default: return <Heart className={iconClass} />;
+    case 'healthcare':
+    case 'health':
+    case 'nutrition':
+      return <Heart className={iconClass} />;
+    case 'education':
+      return <GraduationCap className={iconClass} />;
+    case 'protection':
+      return <Shield className={iconClass} />;
+    case 'wash':
+      return <Droplets className={iconClass} />;
+    case 'relief':
+    case 'disaster relief':
+      return <Building2 className={iconClass} />;
+    case 'empowerment':
+    case 'women empowerment':
+    case 'livelihood':
+      return <Users className={iconClass} />;
+    case 'food security':
+      return <Utensils className={iconClass} />;
+    case 'climate':
+      return <Leaf className={iconClass} />;
+    case 'emergency healthcare':
+      return <Stethoscope className={iconClass} />;
+    default:
+      return <Heart className={iconClass} />;
   }
 }
 
@@ -197,7 +303,7 @@ function ProgramCardView({
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className={cn(
-        'group relative flex flex-col overflow-hidden rounded-[20px] bg-[var(--kindonar-surface-raised)] shadow-sm transition-all duration-300 hover:shadow-xl border border-[var(--kindonar-border-default)]/50',
+        'group relative flex flex-col overflow-hidden rounded-[20px] border border-[var(--kindonar-border-default)]/50 bg-[var(--kindonar-surface-raised)] shadow-sm transition-all duration-300 hover:shadow-xl',
         isFeatured && 'lg:col-span-2 lg:row-span-2',
       )}
     >
@@ -205,7 +311,9 @@ function ProgramCardView({
         href={href}
         className={cn(
           'relative w-full overflow-hidden',
-          isFeatured ? 'h-[280px] md:h-[320px] lg:h-[400px]' : 'h-[200px] md:h-[220px] lg:h-[280px]',
+          isFeatured
+            ? 'h-[280px] md:h-[320px] lg:h-[400px]'
+            : 'h-[200px] md:h-[220px] lg:h-[280px]',
         )}
         tabIndex={-1}
       >
@@ -215,15 +323,20 @@ function ProgramCardView({
           priority={!!isFeatured}
           className="transition-transform duration-700 group-hover:scale-106"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         {showCategoryBadges && program.category && (
-          <span className={cn('absolute top-3 left-3 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl', colors.badge)}>
+          <span
+            className={cn(
+              'absolute top-3 left-3 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl',
+              colors.badge,
+            )}
+          >
             {program.category}
           </span>
         )}
       </a>
       <div className="flex flex-1 flex-col p-5 md:p-6">
-        <h3 className="text-lg font-semibold text-[var(--kindonar-color-neutral-900)] transition-colors duration-200 group-hover:text-[var(--kindonar-color-primary-600)] line-clamp-2">
+        <h3 className="line-clamp-2 text-lg font-semibold text-[var(--kindonar-color-neutral-900)] transition-colors duration-200 group-hover:text-[var(--kindonar-color-primary-600)]">
           {program.title}
         </h3>
         <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-[var(--kindonar-color-neutral-600)]">
@@ -231,7 +344,12 @@ function ProgramCardView({
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           {showImpactStats && program.impactStat && (
-            <span className={cn('inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold transition-all duration-300 group-hover:scale-105', colors.chip)}>
+            <span
+              className={cn(
+                'inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold transition-all duration-300 group-hover:scale-105',
+                colors.chip,
+              )}
+            >
               <ImpactIcon category={program.category} />
               {program.impactStat}
             </span>
@@ -240,7 +358,7 @@ function ProgramCardView({
         <div className="mt-4 flex items-center">
           <a
             href={href}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)] group/btn"
+            className="group/btn inline-flex items-center gap-2 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)]"
           >
             {program.cta.label}
             <ArrowRight
@@ -564,7 +682,11 @@ function ListLayout({ programs, config }: { programs: ProgramCard[]; config: Pro
                 variants={staggerItem}
                 className="group flex flex-col overflow-hidden rounded-[20px] border border-[var(--kindonar-border-default)] bg-[var(--kindonar-surface-raised)] shadow-sm transition-shadow hover:shadow-md sm:flex-row"
               >
-                <a href={href} className="sm:w-56 sm:shrink-0 relative overflow-hidden" tabIndex={-1}>
+                <a
+                  href={href}
+                  className="relative overflow-hidden sm:w-56 sm:shrink-0"
+                  tabIndex={-1}
+                >
                   <ProgramImage
                     src={img.src}
                     alt={img.alt}
@@ -575,7 +697,12 @@ function ListLayout({ programs, config }: { programs: ProgramCard[]; config: Pro
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       {config.showCategoryBadges && program.category && (
-                        <span className={cn('mb-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold text-white', colors.badge)}>
+                        <span
+                          className={cn(
+                            'mb-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold text-white',
+                            colors.badge,
+                          )}
+                        >
                           {program.category}
                         </span>
                       )}
@@ -589,14 +716,19 @@ function ListLayout({ programs, config }: { programs: ProgramCard[]; config: Pro
                   </p>
                   <div className="mt-3 flex items-center justify-between">
                     {config.showImpactStats && program.impactStat && (
-                      <span className={cn('inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold', colors.chip)}>
+                      <span
+                        className={cn(
+                          'inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold',
+                          colors.chip,
+                        )}
+                      >
                         <ImpactIcon category={program.category} />
                         {program.impactStat}
                       </span>
                     )}
                     <a
                       href={href}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)] group/btn"
+                      className="group/btn inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)]"
                     >
                       {program.cta.label}
                       <ArrowRight

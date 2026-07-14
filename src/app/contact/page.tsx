@@ -5,10 +5,10 @@ import { Mail, Phone, MapPin, Calendar, MessageSquare } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/atoms/button';
+import { Accordion } from '@/components/ui/data-display/accordion';
 import { Input } from '@/components/ui/forms/input';
 import { Select } from '@/components/ui/forms/select';
 import { Textarea } from '@/components/ui/forms/textarea';
-import { Accordion } from '@/components/ui/data-display/accordion';
 
 const REASONS = [
   { value: 'general', label: 'General Inquiry' },
@@ -122,7 +122,7 @@ export default function ContactPage() {
                     <item.icon className="h-5 w-5 text-white/60" />
                   </div>
                   <div>
-                    <div className="text-xs font-medium uppercase tracking-wider text-white/40">
+                    <div className="text-xs font-medium tracking-wider text-white/40 uppercase">
                       {item.label}
                     </div>
                     {item.href ? (
@@ -150,12 +150,10 @@ export default function ContactPage() {
                 needs.
               </p>
               <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
-                <div className="text-[10px] font-medium uppercase tracking-wider text-white/30">
+                <div className="text-[10px] font-medium tracking-wider text-white/30 uppercase">
                   Calendly Integration
                 </div>
-                <div className="mt-1 text-xs text-white/50">
-                  Pick a time that works for you
-                </div>
+                <div className="mt-1 text-xs text-white/50">Pick a time that works for you</div>
                 <div className="mt-3 grid grid-cols-7 gap-1">
                   {Array.from({ length: 14 }).map((_, i) => (
                     <div
@@ -270,11 +268,7 @@ export default function ContactPage() {
           <h2 className="mb-6 text-center text-2xl font-bold text-white">
             Frequently Asked Questions
           </h2>
-          <Accordion
-            items={FAQS}
-            variant="ghost"
-            className="space-y-3"
-          />
+          <Accordion items={FAQS} variant="ghost" className="space-y-3" />
         </motion.div>
       </div>
     </div>

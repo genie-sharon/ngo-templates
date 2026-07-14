@@ -353,13 +353,10 @@ interface TemplatePreviewProps {
 function StatItem({ value, label, color }: { value: string; label: string; color: string }) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center px-0.5">
-      <span
-        className="text-[9px] font-extrabold leading-none sm:text-[11px]"
-        style={{ color }}
-      >
+      <span className="text-[9px] leading-none font-extrabold sm:text-[11px]" style={{ color }}>
         {value}
       </span>
-      <span className="mt-px text-[4px] font-medium uppercase tracking-wider text-neutral-400 sm:text-[5px]">
+      <span className="mt-px text-[4px] font-medium tracking-wider text-neutral-400 uppercase sm:text-[5px]">
         {label}
       </span>
     </div>
@@ -380,7 +377,7 @@ function ProgramCard({ program, colors }: { program: ProgramCard; colors: Previe
               background: `linear-gradient(to top, ${colors.dark}dd 0%, ${colors.dark}44 50%, transparent 100%)`,
             }}
           />
-          <span className="absolute bottom-0.5 left-1 text-[5px] font-bold leading-tight text-white drop-shadow-sm sm:text-[6px]">
+          <span className="absolute bottom-0.5 left-1 text-[5px] leading-tight font-bold text-white drop-shadow-sm sm:text-[6px]">
             {program.title}
           </span>
         </div>
@@ -390,7 +387,7 @@ function ProgramCard({ program, colors }: { program: ProgramCard; colors: Previe
           style={{ backgroundColor: `${colors.primary}15` }}
         >
           <span
-            className="px-1 text-[5px] font-semibold leading-tight sm:text-[6px]"
+            className="px-1 text-[5px] leading-tight font-semibold sm:text-[6px]"
             style={{ color: colors.primary }}
           >
             {program.title}
@@ -470,13 +467,13 @@ export function TemplatePreview({ slug, className }: TemplatePreviewProps) {
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-3">
           <span
-            className="text-center text-[10px] font-extrabold leading-tight drop-shadow-lg sm:text-[13px]"
+            className="text-center text-[10px] leading-tight font-extrabold drop-shadow-lg sm:text-[13px]"
             style={{ color: '#ffffff' }}
           >
             {config.heroTitle}
           </span>
           <span
-            className="mt-px max-w-[90%] text-center text-[6px] font-medium leading-tight opacity-80 sm:mt-0.5 sm:text-[7px]"
+            className="mt-px max-w-[90%] text-center text-[6px] leading-tight font-medium opacity-80 sm:mt-0.5 sm:text-[7px]"
             style={{ color: '#ffffffdd' }}
           >
             {config.heroSubtitle}
@@ -492,7 +489,9 @@ export function TemplatePreview({ slug, className }: TemplatePreviewProps) {
               className="rounded-sm border px-1.5 py-[2px] sm:rounded sm:px-2 sm:py-[3px]"
               style={{ borderColor: '#ffffff66', color: '#fff' }}
             >
-              <span className="text-[5px] font-bold sm:text-[6px]">{config.navCta === 'Adopt' ? 'Adopt' : 'Donate'}</span>
+              <span className="text-[5px] font-bold sm:text-[6px]">
+                {config.navCta === 'Adopt' ? 'Adopt' : 'Donate'}
+              </span>
             </div>
           </div>
         </div>

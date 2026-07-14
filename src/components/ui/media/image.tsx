@@ -80,6 +80,7 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
             <div className="animate-shimmer absolute inset-0" />
           </div>
         )}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           ref={ref}
           src={src}

@@ -29,6 +29,7 @@ export function useCounter({
   const prefersReducedMotion = useReducedMotion();
   const startTime = useRef<number | null>(null);
   const frameId = useRef<number>(null);
+  const hasStarted = useRef(false);
 
   const animate = useCallback(() => {
     if (prefersReducedMotion) {
@@ -57,8 +58,9 @@ export function useCounter({
   }, [from, to, duration, prefersReducedMotion]);
 
   useEffect(() => {
-    if (isVisible && autoStart) {
-      animate();
+    if (isVisible && autoStart && !hasStarted.current) {
+      hasStarted.current = true;
+      frameId.current = requestAnimationFrame(() => animate());
     }
     return () => {
       if (frameId.current) {

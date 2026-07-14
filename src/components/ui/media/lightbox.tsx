@@ -34,10 +34,10 @@ export function Lightbox({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const isOpen = controlledOpen ?? internalOpen;
 
-  const close = () => {
+  const close = useCallback(() => {
     if (controlledOpen === undefined) setInternalOpen(false);
     onClose?.();
-  };
+  }, [controlledOpen, onClose]);
 
   const goNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % items.length);

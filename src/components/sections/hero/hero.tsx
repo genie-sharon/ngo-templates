@@ -556,7 +556,7 @@ function HeroCarouselLayout({ config }: { config: HeroConfig }) {
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on('select', onSelect);
-    onSelect(emblaApi);
+    requestAnimationFrame(() => onSelect(emblaApi));
     return () => {
       emblaApi.off('select', onSelect);
     };

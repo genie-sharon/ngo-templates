@@ -469,7 +469,7 @@ export function TemplateGalleryClient() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.1 }}
-                    className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-4 py-1.5 text-[11px] font-bold tracking-wider text-violet-700 shadow-sm uppercase"
+                    className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-4 py-1.5 text-[11px] font-bold tracking-wider text-violet-700 uppercase shadow-sm"
                   >
                     <Sparkles className="h-3.5 w-3.5 text-violet-500" />
                     AI Website Builder

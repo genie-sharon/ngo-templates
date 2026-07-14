@@ -181,7 +181,9 @@ export default function BuilderPage() {
                 <label className="text-sm font-medium text-white/80">Logo Upload</label>
                 <div className="flex cursor-pointer items-center gap-3 rounded-xl border-2 border-dashed border-white/10 bg-white/5 px-4 py-6 transition-colors hover:border-white/20 hover:bg-white/[0.06]">
                   <Upload className="h-5 w-5 text-white/40" />
-                  <span className="text-sm text-white/40">Click to upload your logo (SVG, PNG)</span>
+                  <span className="text-sm text-white/40">
+                    Click to upload your logo (SVG, PNG)
+                  </span>
                 </div>
               </div>
 

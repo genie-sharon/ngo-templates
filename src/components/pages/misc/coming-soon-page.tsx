@@ -43,8 +43,13 @@ export function ComingSoonPage({ config }: { config: ComingSoonConfig }) {
   };
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft);
+  const [isLaunched, setIsLaunched] = useState(false);
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+
+  useEffect(() => {
+    setIsLaunched(new Date(launchDate).getTime() <= Date.now());
+  }, [launchDate]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -60,8 +65,6 @@ export function ComingSoonPage({ config }: { config: ComingSoonConfig }) {
       setEmail('');
     }
   };
-
-  const isLaunched = new Date(launchDate).getTime() <= Date.now();
 
   return (
     <div

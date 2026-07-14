@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { Search, Home, ArrowLeft } from 'lucide-react';
 
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/atoms/button';
 
 export interface SuggestedLink {
@@ -83,10 +85,10 @@ export function NotFoundPage({ config }: { config: NotFoundConfig }) {
           className="flex flex-wrap justify-center gap-3"
         >
           <Button variant="primary" asChild>
-            <a href="/">
+            <Link href="/">
               <Home className="h-4 w-4" />
               Back to Home
-            </a>
+            </Link>
           </Button>
           <Button variant="outline" asChild>
             <a href="javascript:history.back()">

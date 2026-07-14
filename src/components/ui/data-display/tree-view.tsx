@@ -38,7 +38,7 @@ function TreeNodeItem({
   const isExpanded = expandedIds.includes(node.id);
 
   return (
-    <li role="treeitem" aria-expanded={hasChildren ? isExpanded : undefined}>
+    <li role="treeitem" aria-expanded={hasChildren ? isExpanded : undefined} aria-selected={false}>
       <div
         className={cn(
           'flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm text-[var(--kindonar-color-neutral-700)] hover:bg-[var(--kindonar-surface-interactive)]',
@@ -49,7 +49,7 @@ function TreeNodeItem({
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            hasChildren && toggle(node.id);
+            if (hasChildren) toggle(node.id);
           }
         }}
         tabIndex={0}

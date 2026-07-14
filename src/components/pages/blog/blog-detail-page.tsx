@@ -17,6 +17,7 @@ import { useState, useEffect, useMemo } from 'react';
 
 import type { PageConfig, PostItem, BreadcrumbItem } from '@/components/pages/page-config.types';
 import { Image } from '@/components/ui/media/image';
+import NextLink from 'next/link';
 import { cn, formatDate } from '@/lib/utils';
 
 export interface BlogDetailConfig extends PageConfig {
@@ -49,7 +50,9 @@ export function BlogDetailPage({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
+          if (entry.isIntersecting) {
+            requestAnimationFrame(() => setActiveSection(entry.target.id));
+          }
         });
       },
       { rootMargin: '-80px 0px -80% 0px' },
@@ -176,12 +179,12 @@ export function BlogDetailPage({
       <nav aria-label="Breadcrumb" className="mx-auto w-full max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
         <ol className="flex flex-wrap items-center gap-1.5 text-sm text-[var(--kindonar-color-neutral-500)]">
           <li>
-            <a
+            <NextLink
               href="/"
               className="inline-flex items-center gap-1 transition-colors hover:text-[var(--kindonar-color-primary-600)]"
             >
               Home
-            </a>
+            </NextLink>
           </li>
           {breadcrumbs.map((item, idx) => (
             <li key={idx} className="flex items-center gap-1.5">

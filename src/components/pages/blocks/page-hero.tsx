@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { ChevronRight, Home } from 'lucide-react';
 
+import Link from 'next/link';
+
 import { cn } from '@/lib/utils';
 
 import type { PageHeroConfig, BreadcrumbItem } from '../page-config.types';
@@ -14,13 +16,13 @@ export function Breadcrumbs({ items, className }: { items: BreadcrumbItem[]; cla
     <nav aria-label="Breadcrumb" className={cn('mb-6', className)}>
       <ol className="flex flex-wrap items-center gap-1.5 text-sm text-[var(--kindonar-color-neutral-500)]">
         <li>
-          <a
+          <Link
             href="/"
             className="inline-flex items-center gap-1 transition-colors hover:text-[var(--kindonar-color-primary-600)]"
           >
             <Home className="h-3.5 w-3.5" aria-hidden="true" />
             <span className="sr-only">Home</span>
-          </a>
+          </Link>
         </li>
         {items.map((item, idx) => (
           <li key={idx} className="flex items-center gap-1.5">

@@ -173,9 +173,11 @@ function StoriesCarousel({ stories }: { stories: StoryItem[] }) {
 
   useEffect(() => {
     if (!emblaApi) return;
-    setScrollSnaps(emblaApi.scrollSnapList());
+    requestAnimationFrame(() => {
+      setScrollSnaps(emblaApi.scrollSnapList());
+      onSelect();
+    });
     emblaApi.on('select', onSelect);
-    onSelect();
     return () => {
       emblaApi.off('select', onSelect);
     };

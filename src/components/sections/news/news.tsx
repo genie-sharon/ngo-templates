@@ -22,9 +22,7 @@ const CATEGORY_IMAGES: Record<string, string[]> = {
     'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80',
     'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80',
   ],
-  'Emergency Alerts': [
-    'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80',
-  ],
+  'Emergency Alerts': ['https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80'],
   Healthcare: [
     'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
     'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
@@ -34,136 +32,72 @@ const CATEGORY_IMAGES: Record<string, string[]> = {
     'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
     'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
   ],
-  'Health Tips': [
-    'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
-  ],
-  'Medical Research': [
-    'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80',
-  ],
+  'Health Tips': ['https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80'],
+  'Medical Research': ['https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80'],
   Education: [
     'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80',
     'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
     'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80',
     'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80',
   ],
-  'Education Research': [
-    'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80',
-  ],
-  'Impact Report': [
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
-  ],
-  'Water & Sanitation': [
-    'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80',
-  ],
-  WASH: [
-    'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80',
-  ],
-  Climate: [
-    'https://images.unsplash.com/photo-1542601906990-b4d3fb082b14?w=800&q=80',
-  ],
+  'Education Research': ['https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80'],
+  'Impact Report': ['https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'],
+  'Water & Sanitation': ['https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80'],
+  WASH: ['https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80'],
+  Climate: ['https://images.unsplash.com/photo-1542601906990-b4d3fb082b14?w=800&q=80'],
   Environment: [
     'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80',
     'https://images.unsplash.com/photo-1542601906990-b4d3fb082b14?w=800&q=80',
   ],
-  Reforestation: [
-    'https://images.unsplash.com/photo-1542601906990-b4d3fb082b14?w=800&q=80',
-  ],
-  Ocean: [
-    'https://images.unsplash.com/photo-1559827291-2650d44c1e6c?w=800&q=80',
-  ],
-  Energy: [
-    'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80',
-  ],
-  'Gender Equality': [
-    'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80',
-  ],
-  Partnership: [
-    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
-  ],
-  'Food Security': [
-    'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80',
-  ],
-  'Child Protection': [
-    'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
-  ],
+  Reforestation: ['https://images.unsplash.com/photo-1542601906990-b4d3fb082b14?w=800&q=80'],
+  Ocean: ['https://images.unsplash.com/photo-1559827291-2650d44c1e6c?w=800&q=80'],
+  Energy: ['https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80'],
+  'Gender Equality': ['https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80'],
+  Partnership: ['https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80'],
+  'Food Security': ['https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80'],
+  'Child Protection': ['https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80'],
   Stories: [
     'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
     'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80',
   ],
-  Transparency: [
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
-  ],
+  Transparency: ['https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'],
   Impact: [
     'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
     'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80',
   ],
-  Research: [
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
-  ],
-  'Disaster Response': [
-    'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80',
-  ],
-  'Field Reports': [
-    'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80',
-  ],
-  'Volunteer Spotlight': [
-    'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80',
-  ],
-  Volunteer: [
-    'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80',
-  ],
-  Rescue: [
-    'https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=80',
-  ],
+  Research: ['https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'],
+  'Disaster Response': ['https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80'],
+  'Field Reports': ['https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'],
+  'Volunteer Spotlight': ['https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'],
+  Volunteer: ['https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'],
+  Rescue: ['https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=80'],
   Wildlife: [
     'https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?w=800&q=80',
     'https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=80',
   ],
-  Adoption: [
-    'https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=80',
-  ],
-  Faith: [
-    'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80',
-  ],
+  Adoption: ['https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=80'],
+  Faith: ['https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80'],
   Community: [
     'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80',
     'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80',
   ],
-  Arts: [
-    'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80',
-  ],
-  Exhibitions: [
-    'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80',
-  ],
-  Grants: [
-    'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80',
-  ],
-  Digital: [
-    'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
-  ],
-  'Youth': [
+  Arts: ['https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80'],
+  Exhibitions: ['https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80'],
+  Grants: ['https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80'],
+  Digital: ['https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80'],
+  Youth: [
     'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80',
     'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80',
   ],
-  'Press Releases': [
-    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
-  ],
+  'Press Releases': ['https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80'],
   'Impact Stories': [
     'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80',
     'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
   ],
-  'Health Guide': [
-    'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
-  ],
-  'Disease Guide': [
-    'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80',
-  ],
-  Resource: [
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
-  ],
-  Download: [
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
-  ],
+  'Health Guide': ['https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80'],
+  'Disease Guide': ['https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80'],
+  Resource: ['https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'],
+  Download: ['https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'],
   Programs: [
     'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80',
     'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80',
@@ -229,9 +163,7 @@ function hashCode(str: string): number {
   return hash;
 }
 
-function getArticleImage(
-  article: NewsArticle,
-): { src: string; alt: string } {
+function getArticleImage(article: NewsArticle): { src: string; alt: string } {
   const imgSrc =
     typeof article.image === 'object' && article.image
       ? article.image.src
@@ -240,19 +172,17 @@ function getArticleImage(
         : undefined;
 
   const imgAlt =
-    typeof article.image === 'object' && article.image
-      ? article.image.alt
-      : article.title;
+    typeof article.image === 'object' && article.image ? article.image.alt : article.title;
 
   if (imgSrc && !imgSrc.startsWith('/images/')) {
     return { src: imgSrc, alt: imgAlt };
   }
 
-  const images =
-    CATEGORY_IMAGES[article.category] || CATEGORY_IMAGES['Stories'];
+  const images = CATEGORY_IMAGES[article.category] || CATEGORY_IMAGES['Stories'];
   const fallbackSrc =
     images && images.length > 0
-      ? images[Math.abs(hashCode(article.title)) % images.length] ?? 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'
+      ? (images[Math.abs(hashCode(article.title)) % images.length] ??
+        'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80')
       : 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80';
 
   return { src: fallbackSrc, alt: imgAlt! };
@@ -264,9 +194,7 @@ function getCategoryColor(category: string): string {
 
 function getAuthorName(article: NewsArticle): string | undefined {
   if (!article.author) return undefined;
-  return typeof article.author === 'string'
-    ? article.author
-    : article.author.name;
+  return typeof article.author === 'string' ? article.author : article.author.name;
 }
 
 function getAuthorAvatar(article: NewsArticle): string | undefined {
@@ -289,11 +217,29 @@ function NewsImage({
 
   if (error) {
     return (
-      <div className={cn('flex items-center justify-center bg-neutral-200 dark:bg-neutral-800', className)}>
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-neutral-400" aria-hidden="true">
+      <div
+        className={cn(
+          'flex items-center justify-center bg-neutral-200 dark:bg-neutral-800',
+          className,
+        )}
+      >
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          className="text-neutral-400"
+          aria-hidden="true"
+        >
           <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
           <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
-          <path d="M21 15l-5-5L5 21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M21 15l-5-5L5 21"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </div>
     );
@@ -318,11 +264,11 @@ function NewsCard({ article, index }: { article: NewsArticle; index: number }) {
   return (
     <motion.article
       variants={staggerItem}
-      className="group relative flex flex-col overflow-hidden rounded-2xl bg-[var(--kindonar-surface-raised)] shadow-[var(--kindonar-shadow-sm)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+      className="group relative flex flex-col overflow-hidden rounded-2xl bg-[var(--kindonar-surface-raised)] shadow-[var(--kindonar-shadow-sm)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       <a
         href={article.slug}
-        className="relative h-[180px] md:h-[220px] lg:h-[320px] w-full overflow-hidden"
+        className="relative h-[180px] w-full overflow-hidden md:h-[220px] lg:h-[320px]"
         tabIndex={-1}
       >
         <NewsImage
@@ -331,10 +277,10 @@ function NewsCard({ article, index }: { article: NewsArticle; index: number }) {
           priority={index === 0}
           className="transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <span
           className={cn(
-            'absolute top-3 left-3 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 group-hover:brightness-110',
+            'absolute top-3 left-3 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:brightness-110',
             categoryColor,
           )}
         >
@@ -367,7 +313,7 @@ function NewsCard({ article, index }: { article: NewsArticle; index: number }) {
           )}
         </div>
         <a href={article.slug} className="mb-2 block">
-          <h3 className="text-lg font-semibold text-[var(--kindonar-color-neutral-900)] transition-colors duration-300 group-hover:text-[var(--kindonar-color-primary-600)] line-clamp-2">
+          <h3 className="line-clamp-2 text-lg font-semibold text-[var(--kindonar-color-neutral-900)] transition-colors duration-300 group-hover:text-[var(--kindonar-color-primary-600)]">
             {article.title}
           </h3>
         </a>
@@ -376,7 +322,7 @@ function NewsCard({ article, index }: { article: NewsArticle; index: number }) {
         </p>
         <a
           href={article.slug}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)] group/btn"
+          className="group/btn inline-flex items-center gap-2 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)]"
         >
           Read Full Story
           <ArrowRight
@@ -402,7 +348,7 @@ function FeaturedArticle({ article }: { article: NewsArticle }) {
     >
       <a
         href={article.slug}
-        className="relative h-[240px] md:h-full w-full overflow-hidden"
+        className="relative h-[240px] w-full overflow-hidden md:h-full"
         tabIndex={-1}
       >
         <NewsImage
@@ -411,10 +357,10 @@ function FeaturedArticle({ article }: { article: NewsArticle }) {
           priority
           className="transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <span
           className={cn(
-            'absolute top-4 left-4 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 group-hover:brightness-110',
+            'absolute top-4 left-4 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:brightness-110',
             categoryColor,
           )}
         >
@@ -445,12 +391,12 @@ function FeaturedArticle({ article }: { article: NewsArticle }) {
             {article.title}
           </h3>
         </a>
-        <p className="mb-4 text-base leading-relaxed text-[var(--kindonar-color-neutral-600)] line-clamp-3">
+        <p className="mb-4 line-clamp-3 text-base leading-relaxed text-[var(--kindonar-color-neutral-600)]">
           {article.excerpt}
         </p>
         <a
           href={article.slug}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)] group/btn"
+          className="group/btn inline-flex items-center gap-2 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)]"
         >
           Read Full Story
           <ArrowRight
@@ -483,7 +429,7 @@ function SidebarArticle({ article }: { article: NewsArticle }) {
           alt={img.alt}
           className="transition-transform duration-300 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </a>
       <div className="flex flex-1 flex-col justify-center">
         <span
@@ -516,7 +462,7 @@ function MagazineArticle({ article, large }: { article: NewsArticle; large?: boo
     <motion.article
       variants={staggerItem}
       className={cn(
-        'group relative flex flex-col overflow-hidden rounded-2xl bg-[var(--kindonar-surface-raised)] shadow-[var(--kindonar-shadow-sm)] transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5',
+        'group relative flex flex-col overflow-hidden rounded-2xl bg-[var(--kindonar-surface-raised)] shadow-[var(--kindonar-shadow-sm)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl',
         large && 'md:col-span-2 md:row-span-2',
       )}
     >
@@ -534,10 +480,10 @@ function MagazineArticle({ article, large }: { article: NewsArticle; large?: boo
           priority={large}
           className="transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <span
           className={cn(
-            'absolute top-3 left-3 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 group-hover:brightness-110',
+            'absolute top-3 left-3 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:brightness-110',
             categoryColor,
           )}
         >
@@ -550,7 +496,9 @@ function MagazineArticle({ article, large }: { article: NewsArticle; large?: boo
           <time dateTime={article.date}>{formatDate(article.date)}</time>
           {authorName && (
             <>
-              <span aria-hidden="true" className="hidden sm:inline">·</span>
+              <span aria-hidden="true" className="hidden sm:inline">
+                ·
+              </span>
               <span className="inline-flex items-center gap-1">
                 <User size={12} aria-hidden="true" />
                 {authorName}
@@ -561,7 +509,7 @@ function MagazineArticle({ article, large }: { article: NewsArticle; large?: boo
         <a href={article.slug} className="mb-2 block">
           <h3
             className={cn(
-              'font-semibold text-[var(--kindonar-color-neutral-900)] transition-colors duration-300 group-hover:text-[var(--kindonar-color-primary-600)] line-clamp-2',
+              'line-clamp-2 font-semibold text-[var(--kindonar-color-neutral-900)] transition-colors duration-300 group-hover:text-[var(--kindonar-color-primary-600)]',
               large ? 'text-xl md:text-2xl' : 'text-base',
             )}
           >
@@ -576,7 +524,7 @@ function MagazineArticle({ article, large }: { article: NewsArticle; large?: boo
         <div className="mt-auto pt-2">
           <a
             href={article.slug}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)] group/btn"
+            className="group/btn inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)]"
           >
             Read Full Story
             <ArrowRight
@@ -642,13 +590,9 @@ function TimelineArticle({ article }: { article: NewsArticle }) {
               {article.excerpt}
             </p>
             {authorName && (
-              <div className="flex items-center gap-2 text-xs text-[var(--kindonar-color-neutral-500)] mt-auto">
+              <div className="mt-auto flex items-center gap-2 text-xs text-[var(--kindonar-color-neutral-500)]">
                 {authorAvatar && (
-                  <img
-                    src={authorAvatar}
-                    alt=""
-                    className="h-6 w-6 rounded-full object-cover"
-                  />
+                  <img src={authorAvatar} alt="" className="h-6 w-6 rounded-full object-cover" />
                 )}
                 <span>{authorName}</span>
               </div>
@@ -667,10 +611,10 @@ function CarouselArticle({ article }: { article: NewsArticle }) {
 
   return (
     <div className="min-w-0 shrink-0 grow-0 basis-[85%] pl-4 sm:basis-[45%] lg:basis-[30%]">
-      <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-[var(--kindonar-surface-raised)] shadow-[var(--kindonar-shadow-sm)] transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5">
+      <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-[var(--kindonar-surface-raised)] shadow-[var(--kindonar-shadow-sm)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
         <a
           href={article.slug}
-          className="relative h-[180px] md:h-[220px] w-full overflow-hidden"
+          className="relative h-[180px] w-full overflow-hidden md:h-[220px]"
           tabIndex={-1}
         >
           <NewsImage
@@ -678,10 +622,10 @@ function CarouselArticle({ article }: { article: NewsArticle }) {
             alt={img.alt}
             className="transition-transform duration-500 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <span
             className={cn(
-              'absolute top-3 left-3 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 group-hover:brightness-110',
+              'absolute top-3 left-3 z-10 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:brightness-110',
               categoryColor,
             )}
           >
@@ -702,7 +646,7 @@ function CarouselArticle({ article }: { article: NewsArticle }) {
             )}
           </div>
           <a href={article.slug} className="mb-2 block">
-            <h3 className="text-base font-semibold text-[var(--kindonar-color-neutral-900)] transition-colors group-hover:text-[var(--kindonar-color-primary-600)] line-clamp-2">
+            <h3 className="line-clamp-2 text-base font-semibold text-[var(--kindonar-color-neutral-900)] transition-colors group-hover:text-[var(--kindonar-color-primary-600)]">
               {article.title}
             </h3>
           </a>
@@ -711,7 +655,7 @@ function CarouselArticle({ article }: { article: NewsArticle }) {
           </p>
           <a
             href={article.slug}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)] group/btn"
+            className="group/btn inline-flex items-center gap-2 text-sm font-semibold text-[var(--kindonar-color-primary-600)] transition-all duration-300 hover:text-[var(--kindonar-color-primary-700)]"
           >
             Read Full Story
             <ArrowRight
@@ -893,7 +837,7 @@ function NewsCarousel({ articles, uid }: { articles: NewsArticle[]; uid: string 
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on('select', onSelect);
-    onSelect();
+    requestAnimationFrame(() => onSelect());
     return () => {
       emblaApi.off('select', onSelect);
     };

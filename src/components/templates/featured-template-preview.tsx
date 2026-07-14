@@ -160,7 +160,7 @@ function DeviceButton({
     <button
       onClick={onClick}
       className={cn(
-        'rounded-lg px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-wider transition-all',
+        'rounded-lg px-2.5 py-1.5 text-[10px] font-semibold tracking-wider uppercase transition-all',
         active
           ? 'bg-white/15 text-white shadow-sm'
           : 'text-white/50 hover:bg-white/5 hover:text-white/70',
@@ -176,10 +176,10 @@ function DeviceButton({
 function StatBadge({ value, label, color }: { value: string; label: string; color: string }) {
   return (
     <div className="flex flex-col items-center">
-      <span className="text-base font-extrabold leading-none sm:text-lg" style={{ color }}>
+      <span className="text-base leading-none font-extrabold sm:text-lg" style={{ color }}>
         {value}
       </span>
-      <span className="mt-0.5 text-[7px] font-medium uppercase tracking-wider text-white/50 sm:text-[8px]">
+      <span className="mt-0.5 text-[7px] font-medium tracking-wider text-white/50 uppercase sm:text-[8px]">
         {label}
       </span>
     </div>
@@ -266,7 +266,7 @@ export function FeaturedTemplatePreviewContent({
           <Image src={config.heroImage} alt="" fill className="object-cover" sizes="30vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
           <div className="absolute inset-0 flex flex-col justify-end p-2">
-            <span className="text-[9px] font-bold leading-tight text-white">
+            <span className="text-[9px] leading-tight font-bold text-white">
               {config.heroTitle}
             </span>
             <div
@@ -295,8 +295,8 @@ export function FeaturedTemplatePreviewContent({
         <div className="relative h-1/2 overflow-hidden">
           <Image src={config.heroImage} alt="" fill className="object-cover" sizes="50vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-          <div className="absolute bottom-2 left-3 right-3">
-            <span className="text-[11px] font-bold leading-tight text-white">
+          <div className="absolute right-3 bottom-2 left-3">
+            <span className="text-[11px] leading-tight font-bold text-white">
               {config.heroTitle}
             </span>
             <div className="mt-1 flex gap-1">
@@ -335,21 +335,13 @@ export function FeaturedTemplatePreviewContent({
           <div className="h-2 w-2 rounded-full bg-green-500" />
         </div>
         <div className="mx-2 flex h-4 flex-1 items-center rounded bg-white/10 px-2">
-          <span className="text-[7px] text-white/40">
-            kindonar.org/{template.slug}
-          </span>
+          <span className="text-[7px] text-white/40">kindonar.org/{template.slug}</span>
         </div>
         <div className="h-2 w-2 rounded-sm border border-white/10" />
       </div>
 
-      <div
-        className="flex items-center gap-1 px-3 py-1.5"
-        style={{ backgroundColor: c.dark }}
-      >
-        <span
-          className="text-[9px] font-extrabold tracking-tight"
-          style={{ color: '#f1f5f9' }}
-        >
+      <div className="flex items-center gap-1 px-3 py-1.5" style={{ backgroundColor: c.dark }}>
+        <span className="text-[9px] font-extrabold tracking-tight" style={{ color: '#f1f5f9' }}>
           {config.orgName}
         </span>
         <div className="ml-auto flex items-center gap-2">
@@ -387,10 +379,10 @@ export function FeaturedTemplatePreviewContent({
           }}
         />
         <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4">
-          <span className="text-sm font-extrabold leading-tight text-white drop-shadow-lg sm:text-base">
+          <span className="text-sm leading-tight font-extrabold text-white drop-shadow-lg sm:text-base">
             {config.heroTitle}
           </span>
-          <span className="mt-0.5 text-[7px] font-medium leading-tight text-white/70 sm:text-[8px]">
+          <span className="mt-0.5 text-[7px] leading-tight font-medium text-white/70 sm:text-[8px]">
             Making a difference in communities worldwide
           </span>
           <div className="mt-1.5 flex gap-1.5">
@@ -412,12 +404,7 @@ export function FeaturedTemplatePreviewContent({
         style={{ backgroundColor: c.light }}
       >
         {config.stats.map((stat) => (
-          <StatBadge
-            key={stat.label}
-            value={stat.value}
-            label={stat.label}
-            color={c.primary}
-          />
+          <StatBadge key={stat.label} value={stat.value} label={stat.label} color={c.primary} />
         ))}
       </div>
 
@@ -445,11 +432,7 @@ export function FeaturedTemplatePreviewContent({
   );
 }
 
-export function FeaturedTemplatePreview({
-  template,
-}: {
-  template: TemplateData;
-}) {
+export function FeaturedTemplatePreview({ template }: { template: TemplateData }) {
   const [device, setDevice] = useState<DeviceType>('desktop');
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
@@ -467,42 +450,67 @@ export function FeaturedTemplatePreview({
     setMouseY(y);
   };
 
-  const deviceWidth = device === 'mobile' ? 'max-w-[180px]' : device === 'tablet' ? 'max-w-[320px]' : 'max-w-full';
+  const deviceWidth =
+    device === 'mobile' ? 'max-w-[180px]' : device === 'tablet' ? 'max-w-[320px]' : 'max-w-full';
 
   return (
-    <div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      className="relative md:col-span-3"
-    >
-      <div
-        className="absolute -top-2 -right-2 z-20 flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 backdrop-blur-sm"
-      >
+    <div ref={containerRef} onMouseMove={handleMouseMove} className="relative md:col-span-3">
+      <div className="absolute -top-2 -right-2 z-20 flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 backdrop-blur-sm">
         <span className="relative flex h-1.5 w-1.5">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
         </span>
-        <span className="text-[9px] font-bold text-emerald-400 uppercase tracking-wider">
+        <span className="text-[9px] font-bold tracking-wider text-emerald-400 uppercase">
           Live Preview
         </span>
       </div>
 
       <div className="absolute top-2 right-2 z-10 flex items-center gap-1 rounded-lg border border-white/10 bg-black/40 px-1.5 py-1 backdrop-blur-md">
-        <DeviceButton device="desktop" active={device === 'desktop'} onClick={() => setDevice('desktop')}>
-          <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+        <DeviceButton
+          device="desktop"
+          active={device === 'desktop'}
+          onClick={() => setDevice('desktop')}
+        >
+          <svg
+            className="h-3 w-3"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
             <rect x="2" y="3" width="20" height="14" rx="2" />
             <line x1="8" y1="21" x2="16" y2="21" />
             <line x1="12" y1="17" x2="12" y2="21" />
           </svg>
         </DeviceButton>
-        <DeviceButton device="tablet" active={device === 'tablet'} onClick={() => setDevice('tablet')}>
-          <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+        <DeviceButton
+          device="tablet"
+          active={device === 'tablet'}
+          onClick={() => setDevice('tablet')}
+        >
+          <svg
+            className="h-3 w-3"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
             <rect x="4" y="2" width="16" height="20" rx="2" />
             <line x1="12" y1="18" x2="12" y2="18.01" />
           </svg>
         </DeviceButton>
-        <DeviceButton device="mobile" active={device === 'mobile'} onClick={() => setDevice('mobile')}>
-          <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+        <DeviceButton
+          device="mobile"
+          active={device === 'mobile'}
+          onClick={() => setDevice('mobile')}
+        >
+          <svg
+            className="h-3 w-3"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
             <rect x="7" y="2" width="10" height="20" rx="2" />
             <line x1="12" y1="18" x2="12" y2="18.01" />
           </svg>
@@ -510,16 +518,14 @@ export function FeaturedTemplatePreview({
       </div>
 
       <div
-        className={cn(
-          'relative mx-auto min-h-[320px] transition-all duration-500',
-          deviceWidth,
-        )}
+        className={cn('relative mx-auto min-h-[320px] transition-all duration-500', deviceWidth)}
         style={{
           transform: `perspective(1200px) rotateY(${mouseX * 4}deg) rotateX(${-mouseY * 4}deg)`,
           transition: 'transform 0.15s ease-out',
         }}
       >
-        <div className="absolute -inset-2 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{
             background: `linear-gradient(135deg, ${c.primary}20, transparent 40%, ${c.accent}20)`,
             filter: 'blur(20px)',
@@ -535,19 +541,18 @@ export function FeaturedTemplatePreview({
             transition={{ duration: 0.35, ease: [0, 0, 0.2, 1] }}
             className={cn(
               'h-full',
-              device === 'mobile' && 'mx-auto aspect-[9/16] overflow-hidden rounded-2xl border-2 border-neutral-700 shadow-2xl',
-              device === 'tablet' && 'mx-auto aspect-[3/4] overflow-hidden rounded-xl border border-neutral-700 shadow-2xl',
-              device === 'desktop' && 'overflow-hidden rounded-xl border border-neutral-700 shadow-2xl',
+              device === 'mobile' &&
+                'mx-auto aspect-[9/16] overflow-hidden rounded-2xl border-2 border-neutral-700 shadow-2xl',
+              device === 'tablet' &&
+                'mx-auto aspect-[3/4] overflow-hidden rounded-xl border border-neutral-700 shadow-2xl',
+              device === 'desktop' &&
+                'overflow-hidden rounded-xl border border-neutral-700 shadow-2xl',
             )}
             style={{
               minHeight: device === 'desktop' ? '320px' : undefined,
             }}
           >
-            <FeaturedTemplatePreviewContent
-              template={template}
-              config={config}
-              device={device}
-            />
+            <FeaturedTemplatePreviewContent template={template} config={config} device={device} />
           </motion.div>
         </div>
 
@@ -563,7 +568,7 @@ export function FeaturedTemplatePreview({
           <span
             key={pill.label}
             className={cn(
-              'inline-flex items-center rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider',
+              'inline-flex items-center rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-wider uppercase',
               pill.color,
             )}
           >
