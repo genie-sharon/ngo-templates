@@ -1,73 +1,13 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import {
-  ArrowRight,
-  CheckCircle,
-  Palette,
-  Zap,
-  Eye,
-  Globe,
-  BarChart3,
-  Layers,
-  HeartHandshake,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
+import { BuiltForExcellence } from '@/components/sections/built-for-excellence/built-for-excellence';
 import { TemplateCard } from '@/components/templates/template-card';
 import { templates } from '@/data/templates/registry';
-
-const FEATURES = [
-  {
-    icon: Palette,
-    title: 'Premium Design',
-    description:
-      '10 distinct design systems, each with unique color palettes, typography, and visual language crafted for specific NGO missions.',
-  },
-  {
-    icon: Zap,
-    title: 'Performance First',
-    description:
-      'Built on Next.js 16 with automatic image optimization, code splitting, and lazy loading. Every template scores 95+ on Lighthouse.',
-  },
-  {
-    icon: Eye,
-    title: 'WCAG 2.2 AA+',
-    description:
-      'Every component meets WCAG 2.2 AA standards with proper ARIA labels, keyboard navigation, focus management, and reduced motion support.',
-  },
-  {
-    icon: Globe,
-    title: 'SEO Optimized',
-    description:
-      'Semantic HTML, structured data, Open Graph tags, XML sitemaps, and canonical URLs built into every template out of the box.',
-  },
-  {
-    icon: BarChart3,
-    title: 'Analytics Ready',
-    description:
-      'Built-in analytics hooks, cookie consent, and privacy-compliant tracking integration. GDPR and ePrivacy-ready.',
-  },
-  {
-    icon: Layers,
-    title: 'Modular Architecture',
-    description:
-      '40+ reusable section components that compose into any page layout. Mix, match, and extend without touching core code.',
-  },
-  {
-    icon: HeartHandshake,
-    title: 'Crowdera Ready',
-    description:
-      'All templates designed and built specifically for Crowdera-hosted NGO websites. One-click deployment compatible.',
-  },
-  {
-    icon: CheckCircle,
-    title: 'Accessibility Certified',
-    description:
-      'Skip links, screen reader support, color contrast ratios, focus indicators, and reduced motion preferences honored throughout.',
-  },
-];
 
 function AnimatedCounter({ value, suffix = '' }: { value: string; suffix?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -144,7 +84,7 @@ export default function HomePage() {
               transition={{ duration: 0.4, delay: 0.2 }}
               className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-white/80 uppercase backdrop-blur-sm"
             >
-              Born for Crowdera
+              
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -247,51 +187,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-neutral-200 bg-white py-20 sm:py-28 dark:border-neutral-800 dark:bg-neutral-900">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16 text-center"
-          >
-            <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-neutral-100">
-              Built for Excellence
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-neutral-600 dark:text-neutral-400">
-              Every template meets the highest standards for performance, accessibility, and
-              developer experience.
-            </p>
-          </motion.div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {FEATURES.map((feature, i) => {
-              const Icon = feature.icon;
-              return (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-neutral-700 dark:bg-neutral-800"
-                >
-                  <div className="from-primary-500/[0.03] absolute inset-0 bg-gradient-to-br to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400 ring-primary-200/50 dark:ring-primary-800/50 mb-4 inline-flex rounded-xl p-3 ring-1">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="relative mb-2 text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                    {feature.title}
-                  </h3>
-                  <p className="relative text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <BuiltForExcellence />
 
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

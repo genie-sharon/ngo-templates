@@ -23,12 +23,8 @@ export interface ProgramsConfig extends Omit<SectionConfig, 'layout'> {
   programs: ProgramCard[];
   categories?: ProgramCategory[];
   theme: SectionTheme;
-  /** Number of columns for cards/grid layouts */
   columns?: 2 | 3 | 4;
-  /** Autoplay interval for carousel (ms) */
   autoplayInterval?: number;
-  /** Show category badges */
   showCategoryBadges?: boolean;
-  /** Show impact stats */
   showImpactStats?: boolean;
 }

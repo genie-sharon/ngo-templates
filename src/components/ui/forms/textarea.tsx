@@ -37,22 +37,13 @@ export interface TextareaProps
  */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
-    {
-      className,
-      variant,
-      label,
-      helperText,
-      error,
-      showCharCount,
-      maxLength,
-      value = '',
-      id,
-      ...props
-    },
+    { className, variant, label, helperText, error, showCharCount, maxLength, id, ...props },
     ref,
   ) => {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-');
-    const charCount = typeof value === 'string' ? value.length : 0;
+    const hasValue = 'value' in props;
+    const charCount =
+      showCharCount && hasValue && typeof props.value === 'string' ? props.value.length : 0;
 
     return (
       <div className="space-y-1.5">
@@ -70,7 +61,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           className={cn(textareaVariants({ variant: error ? 'error' : variant, className }))}
           aria-invalid={!!error}
           maxLength={maxLength}
-          value={value}
           {...props}
         />
         <div className="flex justify-between">

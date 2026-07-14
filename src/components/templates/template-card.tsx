@@ -6,6 +6,8 @@ import Link from 'next/link';
 import type { TemplateData } from '@/data/templates/types';
 import { TEMPLATE_PAGE_NAMES } from '@/data/templates/types';
 import { cn } from '@/lib/utils';
+import { TemplatePreview } from './template-preview';
+import { FeaturedTemplatePreview } from './featured-template-preview';
 
 const templateAccents: Record<string, string> = {
   universal: 'from-blue-500 to-teal-500',
@@ -213,7 +215,7 @@ function useTemplateInfo(template: TemplateData) {
 }
 
 export function TemplateCard({ template, index = 0 }: { template: TemplateData; index?: number }) {
-  const { pageCount, accent, previewGradient, badges, pageNames, hasMore } =
+  const { pageCount, badges, pageNames, hasMore } =
     useTemplateInfo(template);
 
   return (
@@ -223,67 +225,29 @@ export function TemplateCard({ template, index = 0 }: { template: TemplateData; 
       transition={{ duration: 0.5, delay: index * 0.06, ease: [0, 0, 0.2, 1] }}
       className="group"
     >
-      <div className="relative rounded-2xl border border-neutral-200/70 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700/80">
-        <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-b from-transparent via-transparent to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100" />
+      <div
+        className={cn(
+          'relative rounded-2xl border bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl',
+          'border-neutral-200/70 dark:border-neutral-800 dark:bg-neutral-900',
+          'hover:border-neutral-200 dark:hover:border-neutral-700/80',
+        )}
+      >
+        <div
+          className={cn(
+            'pointer-events-none absolute inset-0 -z-10 rounded-2xl opacity-0 transition-all duration-500 group-hover:opacity-100',
+            'bg-gradient-to-br from-transparent via-transparent to-transparent',
+          )}
+          style={{
+            backgroundImage: `linear-gradient(135deg, transparent 40%, ${getRgbFromSlug(template.slug)} 100%)`,
+            boxShadow: `inset 0 0 0 1px ${getRgbFromSlug(template.slug).replace('0.06', '0.15')}`,
+          }}
+        />
 
         <div className="relative overflow-hidden rounded-t-2xl">
-          <div className={cn('relative aspect-[16/10] overflow-hidden', previewGradient)}>
-            <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent dark:from-neutral-900/50" />
-            <div className="absolute inset-0 flex flex-col p-3 sm:p-4">
-              <div className="mb-2 flex items-center gap-2 rounded-lg border border-white/20 bg-white/40 px-3 py-2 backdrop-blur-sm dark:border-white/10 dark:bg-neutral-900/50">
-                <div className={cn('h-3 w-3 rounded-full bg-gradient-to-r', accent)} />
-                <div className="ml-1 h-1.5 w-10 rounded-full bg-neutral-300/50 dark:bg-neutral-700/50" />
-                <div className="ml-auto flex gap-1.5">
-                  <div className="h-1.5 w-6 rounded-full bg-neutral-300/40 dark:bg-neutral-700/40" />
-                  <div className="h-1.5 w-6 rounded-full bg-neutral-300/40 dark:bg-neutral-700/40" />
-                  <div className="h-1.5 w-6 rounded-full bg-neutral-300/40 dark:bg-neutral-700/40" />
-                </div>
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <div className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-105">
+                <TemplatePreview slug={template.slug} />
               </div>
-              <div className="flex flex-1 gap-2">
-                <div className="flex flex-1 flex-col justify-center">
-                  <div className={cn('mb-1.5 h-2 w-16 rounded-full bg-gradient-to-r', accent)} />
-                  <div className="mb-1 h-2.5 w-full max-w-[180px] rounded-sm bg-neutral-300/40 dark:bg-neutral-700/40" />
-                  <div className="mb-1 h-2 w-3/4 rounded-sm bg-neutral-300/30 dark:bg-neutral-700/30" />
-                  <div className="mb-2 h-2 w-1/2 rounded-sm bg-neutral-300/30 dark:bg-neutral-700/30" />
-                  <div className="flex gap-1.5">
-                    <div
-                      className={cn('h-4 flex-1 rounded-sm bg-gradient-to-r opacity-60', accent)}
-                    />
-                    <div className="h-4 w-14 rounded-sm border border-neutral-300/30 dark:border-neutral-700/30" />
-                  </div>
-                </div>
-                <div className="hidden w-24 flex-col gap-1.5 sm:flex">
-                  <div className="flex-1 rounded-lg bg-neutral-300/20 p-2 dark:bg-neutral-700/20">
-                    <div className="mb-0.5 h-2 w-8 rounded-sm bg-neutral-400/40" />
-                    <div className="h-1.5 w-12 rounded-sm bg-neutral-300/30" />
-                  </div>
-                  <div className="flex-1 rounded-lg bg-neutral-300/20 p-2 dark:bg-neutral-700/20">
-                    <div className="mb-0.5 h-2 w-6 rounded-sm bg-neutral-400/40" />
-                    <div className="h-1.5 w-10 rounded-sm bg-neutral-300/30" />
-                  </div>
-                </div>
-              </div>
-              <div className="mt-2 flex gap-1.5">
-                <div className="flex-1 rounded-md bg-neutral-300/20 p-1.5 dark:bg-neutral-700/20">
-                  <div className="flex gap-1">
-                    <div className="h-6 flex-1 rounded-sm bg-neutral-400/30" />
-                    <div className="h-6 flex-1 rounded-sm bg-neutral-400/30" />
-                    <div className="h-6 flex-1 rounded-sm bg-neutral-400/30" />
-                  </div>
-                </div>
-              </div>
-              <div className="mt-1.5 flex items-center gap-1.5">
-                <div
-                  className={cn('h-1 rounded-full bg-gradient-to-r opacity-40', accent)}
-                  style={{ width: '30%' }}
-                />
-                <div
-                  className={cn('h-1 rounded-full bg-gradient-to-r opacity-30', accent)}
-                  style={{ width: '20%' }}
-                />
-                <div className="ml-auto h-1 w-12 rounded-full bg-neutral-300/20" />
-              </div>
-            </div>
             <div className="absolute top-3 right-3 z-10 flex gap-1.5">
               {badges.slice(0, 3).map((badge) => {
                 const iconMap: Record<string, string> = {
@@ -376,12 +340,12 @@ export function TemplateCard({ template, index = 0 }: { template: TemplateData; 
             <Link
               href={`/templates/${template.slug}`}
               className={cn(
-                'inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold transition-all',
-                'bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200',
+                'inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-300',
+                'bg-neutral-900 text-white hover:bg-neutral-800 group-hover:scale-[1.02] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200',
               )}
             >
               <svg
-                className="h-3.5 w-3.5"
+                className="h-3.5 w-3.5 transition-transform duration-300 group-hover:scale-110"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -397,12 +361,12 @@ export function TemplateCard({ template, index = 0 }: { template: TemplateData; 
             <Link
               href={`/templates/${template.slug}`}
               className={cn(
-                'inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold transition-all',
-                'border border-neutral-200 text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-800',
+                'inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-300',
+                'border border-neutral-200 text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50 group-hover:border-neutral-300 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-800',
               )}
             >
               <svg
-                className="h-3.5 w-3.5"
+                className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -417,17 +381,6 @@ export function TemplateCard({ template, index = 0 }: { template: TemplateData; 
           </div>
         </div>
 
-        <div
-          className={cn(
-            'pointer-events-none absolute inset-0 rounded-2xl transition-all duration-500',
-            'ring-1 ring-inset group-hover:opacity-100',
-            'opacity-0 ring-transparent',
-          )}
-          style={{
-            backgroundImage: `linear-gradient(135deg, transparent 60%, ${getRgbFromSlug(template.slug)} 100%)`,
-            boxShadow: `inset 0 0 0 1px ${getRgbFromSlug(template.slug).replace('0.06', '0.15')}`,
-          }}
-        />
       </div>
     </motion.div>
   );
@@ -450,7 +403,7 @@ function getRgbFromSlug(slug: string): string {
 }
 
 export function FeaturedTemplateCard({ template }: { template: TemplateData }) {
-  const { pageCount, accent, previewGradient, badges } = useTemplateInfo(template);
+  const { pageCount, accent, badges } = useTemplateInfo(template);
 
   return (
     <motion.div
@@ -569,67 +522,7 @@ export function FeaturedTemplateCard({ template }: { template: TemplateData }) {
               </Link>
             </div>
           </div>
-          <div className="relative min-h-[260px] md:col-span-3">
-            <div className={cn('absolute inset-0 bg-gradient-to-br', previewGradient)} />
-            <div className="absolute inset-0 bg-gradient-to-l from-white/40 to-transparent dark:from-neutral-900/40" />
-            <div className="absolute inset-3 sm:inset-4 md:inset-6">
-              <div className="flex h-full flex-col overflow-hidden rounded-xl border border-white/30 bg-white/70 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-neutral-900/70">
-                <div className="flex items-center gap-1.5 border-b border-white/20 px-3 py-2 dark:border-white/10">
-                  <div className="h-2 w-2 rounded-full bg-red-400" />
-                  <div className="h-2 w-2 rounded-full bg-amber-400" />
-                  <div className="h-2 w-2 rounded-full bg-green-400" />
-                  <div
-                    className={cn(
-                      'ml-2 h-1.5 w-20 rounded-full bg-gradient-to-r opacity-60',
-                      accent,
-                    )}
-                  />
-                  <div className="ml-auto flex gap-1">
-                    <div className="h-1.5 w-4 rounded-full bg-neutral-300/40" />
-                    <div className="h-1.5 w-4 rounded-full bg-neutral-300/40" />
-                  </div>
-                </div>
-                <div className="flex flex-1 gap-2 p-3">
-                  <div className="flex flex-1 flex-col justify-center">
-                    <div
-                      className={cn('-mt-1 mb-2 h-2 w-12 rounded-sm bg-gradient-to-r', accent)}
-                    />
-                    <div className="mb-1 h-3 w-full rounded-sm bg-neutral-300/50 dark:bg-neutral-700/50" />
-                    <div className="mb-1 h-1.5 w-5/6 rounded-sm bg-neutral-300/30 dark:bg-neutral-700/30" />
-                    <div className="mb-1 h-1.5 w-3/4 rounded-sm bg-neutral-300/30 dark:bg-neutral-700/30" />
-                    <div className="mb-2 h-1.5 w-2/3 rounded-sm bg-neutral-300/30 dark:bg-neutral-700/30" />
-                    <div className="flex gap-1.5">
-                      <div
-                        className={cn('h-5 flex-1 rounded-sm bg-gradient-to-r opacity-50', accent)}
-                      />
-                      <div className="h-5 w-16 rounded-sm border border-neutral-300/30 dark:border-neutral-700/30" />
-                    </div>
-                  </div>
-                  <div className="hidden w-20 flex-col gap-1.5 sm:flex">
-                    <div className="flex-1 rounded-md bg-neutral-300/20 p-1.5 dark:bg-neutral-700/20">
-                      <div className="mb-0.5 h-2 w-6 rounded-sm bg-neutral-400/40" />
-                      <div className="h-1 w-8 rounded-sm bg-neutral-300/30" />
-                    </div>
-                    <div className="flex-1 rounded-md bg-neutral-300/20 p-1.5 dark:bg-neutral-700/20">
-                      <div className="mb-0.5 h-2 w-6 rounded-sm bg-neutral-400/40" />
-                      <div className="h-1 w-8 rounded-sm bg-neutral-300/30" />
-                    </div>
-                    <div className="flex-1 rounded-md bg-neutral-300/20 p-1.5 dark:bg-neutral-700/20">
-                      <div className="mb-0.5 h-2 w-6 rounded-sm bg-neutral-400/40" />
-                      <div className="h-1 w-8 rounded-sm bg-neutral-300/30" />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-1 border-t border-white/20 px-3 py-1.5 dark:border-white/10">
-                  <div
-                    className={cn('h-1 flex-1 rounded-full bg-gradient-to-r opacity-40', accent)}
-                  />
-                  <div className="h-1 flex-1 rounded-full bg-neutral-300/20" />
-                  <div className="h-1 flex-1 rounded-full bg-neutral-300/20" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <FeaturedTemplatePreview template={template} />
         </div>
       </div>
     </motion.div>

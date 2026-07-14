@@ -450,38 +450,84 @@ export function TemplateGalleryClient() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mt-16 mb-16 flex flex-col items-center gap-4 rounded-2xl border border-neutral-100 bg-neutral-50/50 p-10 text-center dark:border-neutral-800 dark:bg-neutral-900/50"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: [0, 0, 0.2, 1] }}
+                className="relative mt-16 mb-16 overflow-hidden rounded-3xl border border-neutral-200 bg-white p-8 text-center shadow-xl sm:p-14 dark:border-neutral-800 dark:bg-neutral-900"
               >
-                <div className="from-primary-500 to-primary-400 shadow-primary-500/20 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg">
-                  <Sparkles className="h-6 w-6 text-white" />
+                <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl">
+                  <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-violet-500/10 blur-[80px] dark:bg-violet-500/15" />
+                  <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-fuchsia-500/8 blur-[80px] dark:bg-fuchsia-500/12" />
+                  <div className="absolute top-1/3 right-1/4 h-48 w-48 rounded-full bg-blue-500/6 blur-[60px] dark:bg-blue-500/10" />
+                  <div className="absolute bottom-1/3 left-1/4 h-48 w-48 rounded-full bg-indigo-500/6 blur-[60px] dark:bg-indigo-500/10" />
                 </div>
-                <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
-                  Need a custom template?
-                </h3>
-                <p className="max-w-md text-sm text-neutral-500 dark:text-neutral-400">
-                  Every template is fully customizable. Use the template builder to customize
-                  colors, sections, and content to match your brand.
-                </p>
-                <Link
-                  href="/templates"
-                  className="inline-flex h-10 items-center gap-2 rounded-xl border border-neutral-200 px-5 text-sm font-semibold text-neutral-600 transition-all hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-400 dark:hover:border-neutral-600 dark:hover:bg-neutral-800"
-                >
-                  Learn More
-                  <svg
-                    className="h-4 w-4"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+
+                <div className="relative">
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.1 }}
+                    className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-4 py-1.5 text-[11px] font-bold tracking-wider text-violet-700 shadow-sm uppercase"
                   >
-                    <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
+                    <Sparkles className="h-3.5 w-3.5 text-violet-500" />
+                    AI Website Builder
+                  </motion.span>
+
+                  <h3 className="text-2xl font-extrabold tracking-tight text-neutral-900 sm:text-3xl lg:text-4xl dark:text-neutral-100">
+                    Didn&apos;t find the perfect template?
+                  </h3>
+                  <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Let our AI generate a completely custom NGO website tailored to your mission,
+                    branding, colors, pages and content&mdash;in just a few minutes.
+                  </p>
+
+                  <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                    <Link
+                      href="/builder"
+                      className={cn(
+                        'group inline-flex h-12 items-center gap-2.5 rounded-xl px-6 text-sm font-bold transition-all duration-300',
+                        'bg-gradient-to-r from-violet-700 to-fuchsia-700 text-white shadow-lg shadow-violet-500/20',
+                        'hover:from-violet-600 hover:to-fuchsia-600 hover:shadow-xl hover:shadow-violet-500/30',
+                        'hover:-translate-y-0.5 active:translate-y-0',
+                        'dark:from-violet-600 dark:to-fuchsia-600 dark:hover:from-violet-500 dark:hover:to-fuchsia-500',
+                      )}
+                      aria-label="Build custom NGO website with AI"
+                    >
+                      <Sparkles className="h-4 w-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
+                      Build Custom Website
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className={cn(
+                        'group inline-flex h-12 items-center gap-2.5 rounded-xl border-2 px-6 text-sm font-bold transition-all duration-300',
+                        'border-neutral-200 bg-white text-neutral-800',
+                        'hover:border-neutral-300 hover:bg-neutral-50 hover:text-neutral-900',
+                        'hover:-translate-y-0.5 active:translate-y-0',
+                        'dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200',
+                        'dark:hover:border-neutral-600 dark:hover:bg-neutral-700 dark:hover:text-white',
+                      )}
+                      aria-label="Book a demo"
+                    >
+                      <svg
+                        className="h-4 w-4 transition-transform duration-300 group-hover:scale-110"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                      </svg>
+                      Book Demo
+                    </Link>
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           )}

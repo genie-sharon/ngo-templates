@@ -109,8 +109,8 @@ export function ContentBlockRenderer({
       {type === 'accordion' && items && (
         <div className="mt-8">
           <Accordion
-            items={items.map((item) => ({
-              id: (item as Record<string, string>).id || Math.random().toString(),
+            items={items.map((item, idx) => ({
+              id: (item as Record<string, string>).id || `accordion-${idx}`,
               title: (item as Record<string, string>).title || '',
               content: (item as Record<string, string>).content || '',
             }))}
@@ -122,8 +122,8 @@ export function ContentBlockRenderer({
       {type === 'timeline' && items && (
         <div className="mt-8">
           <Timeline
-            items={items.map((item) => ({
-              id: (item as Record<string, string>).id || Math.random().toString(),
+            items={items.map((item, idx) => ({
+              id: (item as Record<string, string>).id || `timeline-${idx}`,
               year: (item as Record<string, string>).year,
               title: (item as Record<string, string>).title || '',
               description: (item as Record<string, string>).description,

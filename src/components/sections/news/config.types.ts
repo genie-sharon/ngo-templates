@@ -5,14 +5,21 @@ export interface NewsAuthor {
   avatar?: string;
 }
 
+export interface NewsArticleImage {
+  src: string;
+  alt: string;
+}
+
 export interface NewsArticle {
   title: string;
   slug: string;
-  image?: string;
+  image?: string | NewsArticleImage;
   date: string;
   category: string;
   excerpt: string;
-  author?: NewsAuthor;
+  author?: string | NewsAuthor;
+  readTime?: string;
+  views?: string;
 }
 
 export interface NewsConfig {
