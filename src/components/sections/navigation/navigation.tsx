@@ -2,9 +2,8 @@
 
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X, Search, Globe, ChevronDown, ChevronRight } from 'lucide-react';
-import { useState, useRef, useCallback, useEffect, type KeyboardEvent } from 'react';
-
 import Link from 'next/link';
+import { useState, useRef, useCallback, useEffect, type KeyboardEvent } from 'react';
 
 import { Image } from '@/components/ui/media/image';
 import { cn } from '@/lib/utils';
@@ -405,8 +404,7 @@ export function Navigation({ config }: { config?: NavigationConfig }) {
     safeLanguages[0] ?? { code: 'en', label: 'English' },
   );
   const [searchQuery, setSearchQuery] = useState('');
-  const searchQueryRef = useRef(searchQuery);
-  searchQueryRef.current = searchQuery;
+  const searchQueryRef = useRef('');
   const searchInputRef = useRef<HTMLInputElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const langButtonRef = useRef<HTMLButtonElement>(null);
@@ -416,6 +414,10 @@ export function Navigation({ config }: { config?: NavigationConfig }) {
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setIsScrolled(latest > 80);
   });
+
+  useEffect(() => {
+    searchQueryRef.current = searchQuery;
+  }, [searchQuery]);
 
   useEffect(() => {
     if (searchOpen && searchInputRef.current) {
@@ -473,13 +475,16 @@ export function Navigation({ config }: { config?: NavigationConfig }) {
         setSearchQuery('');
       }
     },
-    [],
+    [setSearchOpen, setSearchQuery],
   );
 
-  const handleLangSelect = useCallback((lang: { code: string; label: string }) => {
-    setSelectedLang(lang);
-    setLangOpen(false);
-  }, []);
+  const handleLangSelect = useCallback(
+    (lang: { code: string; label: string }) => {
+      setSelectedLang(lang);
+      setLangOpen(false);
+    },
+    [setLangOpen, setSelectedLang],
+  );
 
   const isCenteredLayout = layout === 'centered';
 

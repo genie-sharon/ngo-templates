@@ -60,7 +60,7 @@ export function Lightbox({
       document.removeEventListener('keydown', handleKey);
       document.body.style.overflow = '';
     };
-  }, [isOpen, goNext, goPrev]);
+  }, [isOpen, close, goNext, goPrev]);
 
   if (!isOpen || items.length === 0) return null;
 

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Heart, MessageCircle, Share2 } from 'lucide-react';
+import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
@@ -65,11 +66,12 @@ export function CommunityWallSection({ config, posts, className }: CommunityWall
               >
                 <div className="flex items-center gap-3">
                   {post.avatar ? (
-                    <img
+                    <Image
                       src={post.avatar.src}
                       alt={post.avatar.alt}
                       width={40}
                       height={40}
+                      unoptimized
                       className="h-10 w-10 rounded-full object-cover"
                     />
                   ) : (
@@ -114,9 +116,12 @@ export function CommunityWallSection({ config, posts, className }: CommunityWall
                   {post.content}
                 </p>
                 {post.image && (
-                  <img
+                  <Image
                     src={post.image.src}
                     alt={post.image.alt}
+                    width={600}
+                    height={400}
+                    unoptimized
                     className="mt-3 w-full rounded-lg object-cover"
                   />
                 )}

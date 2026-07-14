@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
+import Image from 'next/image';
 import { forwardRef } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -35,11 +36,13 @@ export const SuccessStoryCard = forwardRef<HTMLDivElement, SuccessStoryCardProps
         )}
       >
         <div className="relative h-48 w-full shrink-0 md:h-auto md:w-56 lg:w-72">
-          <img
+          <Image
             src={image}
             alt={`Photo of ${name}`}
             className="h-full w-full object-cover"
-            loading="lazy"
+            width={288}
+            height={192}
+            unoptimized
           />
         </div>
         <div className="flex flex-1 flex-col p-6">

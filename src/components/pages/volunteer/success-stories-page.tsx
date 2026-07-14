@@ -4,6 +4,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion } from 'framer-motion';
 import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
 
 import type { SectionImage } from '@/components/sections/section-config.types';
@@ -52,14 +53,16 @@ function StoryCard({ story, featured }: { story: StoryItem; featured?: boolean }
       )}
     >
       <div className={cn('overflow-hidden', featured && 'h-full')}>
-        <img
+        <Image
           src={story.image.src}
           alt={story.image.alt}
+          width={400}
+          height={300}
+          unoptimized
           className={cn(
             'h-full w-full object-cover transition-transform duration-500 group-hover:scale-105',
             featured ? 'h-64 lg:h-full' : 'h-56',
           )}
-          loading="lazy"
         />
       </div>
       <div className="flex flex-col p-6 md:p-8">

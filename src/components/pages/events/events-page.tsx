@@ -200,12 +200,10 @@ function CalendarLayout({ events }: { events: EventItem[] }) {
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfWeek = new Date(currentYear, currentMonth, 1).getDay();
 
-  const monthEvents = useMemo(() => {
-    return events.filter((e) => {
-      const d = new Date(e.date);
-      return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
-    });
-  }, [events, currentMonth, currentYear]);
+  const monthEvents = events.filter((e) => {
+    const d = new Date(e.date);
+    return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
+  });
 
   const goPrevMonth = () => {
     if (currentMonth === 0) {

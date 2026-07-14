@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
+import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
@@ -64,11 +65,12 @@ export function SuccessStoriesSection({ config, stories, className }: SuccessSto
               >
                 <div className="flex items-center gap-4">
                   {story.image ? (
-                    <img
+                    <Image
                       src={story.image.src}
                       alt={story.image.alt}
                       width={56}
                       height={56}
+                      unoptimized
                       className="h-14 w-14 rounded-full object-cover"
                     />
                   ) : (

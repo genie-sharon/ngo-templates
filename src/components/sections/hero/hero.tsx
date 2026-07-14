@@ -4,6 +4,7 @@ import type { EmblaCarouselType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 import {
   useCallback,
   useEffect,
@@ -196,12 +197,13 @@ function TrustBadgesRow({ badges, isDark }: { badges: TrustBadge[]; isDark: bool
       <div className="flex flex-wrap items-center gap-6">
         {badges.map((badge) =>
           badge.src ? (
-            <img
+            <Image
               key={badge.alt}
               src={badge.src}
               alt={badge.alt}
               width={badge.width || 80}
               height={badge.height || 24}
+              unoptimized
               className="h-6 w-auto opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
               loading="lazy"
             />
@@ -419,10 +421,12 @@ function HeroBackgroundImage({
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden" aria-hidden="true">
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        <img
+        <Image
           src={src}
           alt={alt}
-          className={cn('h-full w-full object-cover', imageClassName)}
+          fill
+          unoptimized
+          className={cn('object-cover', imageClassName)}
           loading="eager"
         />
       </motion.div>
@@ -634,10 +638,12 @@ function HeroCarouselLayout({ config }: { config: HeroConfig }) {
               >
                 <div className="absolute inset-0" aria-hidden="true">
                   {slide.image && (
-                    <img
+                    <Image
                       src={slide.image.src}
                       alt={slide.image.alt}
-                      className="h-full w-full object-cover"
+                      fill
+                      unoptimized
+                      className="object-cover"
                       loading={slides.indexOf(slide) === 0 ? 'eager' : 'lazy'}
                     />
                   )}
@@ -760,10 +766,12 @@ function HeroSplitLayout({ config }: { config: HeroConfig }) {
         {imageLeft && (
           <div className="relative h-64 overflow-hidden lg:h-auto" aria-hidden="true">
             {bgImage && (
-              <img
+              <Image
                 src={bgImage.src}
                 alt={bgImage.alt}
-                className="h-full w-full object-cover"
+                fill
+                unoptimized
+                className="object-cover"
                 loading="eager"
               />
             )}
@@ -785,10 +793,12 @@ function HeroSplitLayout({ config }: { config: HeroConfig }) {
             aria-hidden="true"
           >
             {bgImage && (
-              <img
+              <Image
                 src={bgImage.src}
                 alt={bgImage.alt}
-                className="h-full w-full object-cover"
+                fill
+                unoptimized
+                className="object-cover"
                 loading="eager"
               />
             )}
@@ -948,18 +958,23 @@ function HeroIllustrationLayout({ config }: { config: HeroConfig }) {
               >
                 {typeof config.illustration?.src === 'string' &&
                   (config.illustration.src.endsWith('.svg') ? (
-                    <img
+                    <Image
                       src={config.illustration.src}
                       alt={config.illustration.alt}
+                      width={512}
+                      height={384}
+                      unoptimized
                       className="h-auto w-full max-w-lg"
                       loading="eager"
                     />
                   ) : (
                     <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                      <img
+                      <Image
                         src={config.illustration.src}
                         alt={config.illustration.alt}
-                        className="h-full w-full object-cover"
+                        fill
+                        unoptimized
+                        className="object-cover"
                         loading="eager"
                       />
                     </div>

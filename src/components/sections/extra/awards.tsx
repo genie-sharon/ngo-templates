@@ -24,7 +24,11 @@ export interface AwardsSectionProps {
   className?: string;
 }
 
-const defaultIcons = [<Trophy size={24} />, <Award size={24} />, <Medal size={24} />];
+const defaultIcons = [
+  <Trophy key="trophy" size={24} />,
+  <Award key="award" size={24} />,
+  <Medal key="medal" size={24} />,
+];
 
 export function AwardsSection({ config, awards, className }: AwardsSectionProps) {
   if (!config.visible) return null;

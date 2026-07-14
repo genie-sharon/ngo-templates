@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { forwardRef } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -67,9 +68,12 @@ export const HeroTrustBadges = forwardRef<HTMLDivElement, HeroTrustBadgesProps>(
               aria-label={badge.name}
             >
               {badge.logo && variant !== 'text' && (
-                <img
+                <Image
                   src={badge.logo}
                   alt={`${badge.name} logo`}
+                  width={112}
+                  height={32}
+                  unoptimized
                   className="h-7 w-auto object-contain md:h-8"
                   loading="lazy"
                 />

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import { ContactInfo } from '@/components/ui/footer/contact-info';
@@ -188,7 +189,7 @@ function LogoBlock({ logo, description }: { logo?: FooterConfig['logo']; descrip
   return (
     <div className="max-w-sm">
       {logo?.src && (
-        <img
+        <Image
           src={logo.src}
           alt={logo.alt ?? ''}
           width={logo.width ?? 160}
@@ -377,9 +378,6 @@ interface FooterSectionProps {
 }
 
 export function FooterSection({ config, className }: FooterSectionProps) {
-  if (!config) return null;
-  if (!config.visible) return null;
-
   const [backToTopVisible, setBackToTopVisible] = useState(false);
 
   useEffect(() => {
@@ -387,6 +385,9 @@ export function FooterSection({ config, className }: FooterSectionProps) {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  if (!config) return null;
+  if (!config.visible) return null;
 
   if (!config.layout) return null;
   const LayoutComponent = layoutComponents[config.layout];

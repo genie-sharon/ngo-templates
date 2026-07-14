@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
+import Image from 'next/image';
 import { forwardRef, type HTMLAttributes } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -43,9 +44,12 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
     return (
       <span ref={ref} className={cn('relative inline-flex', className)} {...props}>
         {src ? (
-          <img
+          <Image
             src={src}
             alt={alt}
+            width={80}
+            height={80}
+            unoptimized
             className={cn(avatarVariants({ size }), 'object-cover')}
             onError={(e) => {
               const target = e.currentTarget;

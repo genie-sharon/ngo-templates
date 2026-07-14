@@ -13,11 +13,11 @@ import {
   Globe,
   ExternalLink,
 } from 'lucide-react';
+import NextLink from 'next/link';
 import { useState, useEffect, useMemo } from 'react';
 
 import type { PageConfig, PostItem, BreadcrumbItem } from '@/components/pages/page-config.types';
 import { Image } from '@/components/ui/media/image';
-import NextLink from 'next/link';
 import { cn, formatDate } from '@/lib/utils';
 
 export interface BlogDetailConfig extends PageConfig {

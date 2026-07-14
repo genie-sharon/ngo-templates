@@ -3,6 +3,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Heart, Bookmark } from 'lucide-react';
+import NextImage from 'next/image';
 import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { Image } from '@/components/ui/media/image';
@@ -113,9 +114,12 @@ function InlineLightbox({
           className="flex max-h-[85vh] max-w-[90vw] items-center justify-center"
           onClick={(e) => e.stopPropagation()}
         >
-          <img
+          <NextImage
             src={current.src}
             alt={current.alt}
+            width={1200}
+            height={800}
+            unoptimized
             className="max-h-[85vh] max-w-[90vw] rounded-lg object-contain"
           />
         </motion.div>

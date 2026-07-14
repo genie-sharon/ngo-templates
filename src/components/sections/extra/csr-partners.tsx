@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Building2, Globe, Handshake } from 'lucide-react';
+import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
@@ -70,11 +71,12 @@ export function CSRPartnersSection({ config, partners, className }: CSRPartnersS
               >
                 <div className="flex items-center gap-4">
                   {partner.logo ? (
-                    <img
+                    <Image
                       src={partner.logo.src}
                       alt={partner.logo.alt}
                       width={48}
                       height={48}
+                      unoptimized
                       className="h-12 w-12 rounded-lg object-contain"
                     />
                   ) : (

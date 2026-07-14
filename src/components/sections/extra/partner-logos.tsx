@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
@@ -66,11 +67,12 @@ export function PartnerLogosSection({
                     rel="noopener noreferrer"
                     aria-label={partner.name}
                   >
-                    <img
+                    <Image
                       src={partner.logo.src}
                       alt={partner.logo.alt}
                       width={partner.logo.width ?? 120}
                       height={partner.logo.height ?? 40}
+                      unoptimized
                       className={cn(
                         'h-10 w-auto object-contain opacity-60 grayscale transition-all hover:opacity-100 hover:grayscale-0',
                         isDark && 'brightness-0 invert',
@@ -78,11 +80,12 @@ export function PartnerLogosSection({
                     />
                   </a>
                 ) : (
-                  <img
+                  <Image
                     src={partner.logo.src}
                     alt={partner.logo.alt}
                     width={partner.logo.width ?? 120}
                     height={partner.logo.height ?? 40}
+                    unoptimized
                     className={cn(
                       'h-10 w-auto object-contain opacity-60 grayscale transition-all hover:opacity-100 hover:grayscale-0',
                       isDark && 'brightness-0 invert',
@@ -138,11 +141,12 @@ export function PartnerLogosSection({
                       rel="noopener noreferrer"
                       aria-label={partner.name}
                     >
-                      <img
+                      <Image
                         src={partner.logo.src}
                         alt={partner.logo.alt}
                         width={partner.logo.width ?? 120}
                         height={partner.logo.height ?? 40}
+                        unoptimized
                         className={cn(
                           'h-12 w-auto object-contain opacity-60 grayscale transition-all hover:opacity-100 hover:grayscale-0',
                           isDark && 'brightness-0 invert',
@@ -150,11 +154,12 @@ export function PartnerLogosSection({
                       />
                     </a>
                   ) : (
-                    <img
+                    <Image
                       src={partner.logo.src}
                       alt={partner.logo.alt}
                       width={partner.logo.width ?? 120}
                       height={partner.logo.height ?? 40}
+                      unoptimized
                       className={cn(
                         'h-12 w-auto object-contain opacity-60 grayscale transition-all hover:opacity-100 hover:grayscale-0',
                         isDark && 'brightness-0 invert',

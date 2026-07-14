@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, type FieldErrors, type UseFormRegister } from 'react-hook-form';
 
 import type { SocialLink } from '@/components/sections/section-config.types';
 import { Button } from '@/components/ui/atoms/button';
@@ -163,8 +163,8 @@ function FormField({
   errors,
 }: {
   field: ContactFormField;
-  register: any;
-  errors: any;
+  register: UseFormRegister<FormValues>;
+  errors: FieldErrors<FormValues>;
 }) {
   const fieldError = errors[field.name]?.message as string | undefined;
   const commonProps = {
@@ -249,7 +249,9 @@ function ContactForm({ config }: { config: ContactPageConfig }) {
   const onSubmit = async (data: FormValues) => {
     setSubmitError(null);
     if (config.formSubmitEmail) {
-      window.location.assign(`mailto:${config.formSubmitEmail}?subject=${encodeURIComponent('Contact Form Submission')}&body=${encodeURIComponent(JSON.stringify(data, null, 2))}`);
+      window.location.assign(
+        `mailto:${config.formSubmitEmail}?subject=${encodeURIComponent('Contact Form Submission')}&body=${encodeURIComponent(JSON.stringify(data, null, 2))}`,
+      );
       reset();
       return;
     }

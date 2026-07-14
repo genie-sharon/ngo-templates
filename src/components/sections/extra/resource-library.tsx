@@ -110,9 +110,9 @@ export function ResourceLibrarySection({
   resources,
   className,
 }: ResourceLibrarySectionProps) {
-  if (!config.visible) return null;
-
   const [activeFilter, setActiveFilter] = useState<ResourceType | 'all'>('all');
+
+  if (!config.visible) return null;
 
   const isDark =
     config.theme === 'dark' ||

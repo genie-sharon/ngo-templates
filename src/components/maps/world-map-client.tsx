@@ -1,12 +1,9 @@
 'use client';
 
 import { MapPin } from 'lucide-react';
-import { useMemo, useState, useCallback } from 'react';
-import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps';
+import { useMemo, useState, useCallback, type MouseEvent as ReactMouseEvent } from 'react';
 
 import type { CountryPresence } from '@/components/sections/extra/global-impact';
-
-const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
 
 const COUNTRY_COORDS: Record<string, [number, number]> = {
   Afghanistan: [67.709953, 33.93911],
@@ -43,58 +40,28 @@ const COUNTRY_COORDS: Record<string, [number, number]> = {
   Ghana: [-1.023194, 7.946527],
 };
 
-const COUNTRY_NAME_MAP: Record<string, string> = {
-  'DR Congo': 'Dem. Rep. Congo',
-  USA: 'United States of America',
-  UK: 'United Kingdom',
-  UAE: 'United Arab Emirates',
-};
-
-const MAP_STYLE = {
-  default: {
-    fill: '#EEF2F7',
-    stroke: '#CBD5E1',
-    strokeWidth: 0.4,
-    outline: 'none',
-    transition: 'fill 0.3s ease, stroke 0.3s ease',
+const CONTINENT_PATHS = [
+  {
+    id: 'north-america',
+    d: 'M115 170c-24-14-39-24-54-44l18-34 28-14 24 12 20 24-14 24-20 30-6 10z',
   },
-  hover: {
-    fill: '#10B981',
-    stroke: '#34D399',
-    strokeWidth: 1.2,
-    outline: 'none',
-    cursor: 'pointer',
+  {
+    id: 'south-america',
+    d: 'M220 250c-18-14-28-28-28-48l12-40 24-20 30 16 12 36-12 44-20 20z',
   },
-  pressed: {
-    fill: '#059669',
-    stroke: '#047857',
-    strokeWidth: 1.2,
-    outline: 'none',
+  {
+    id: 'europe-africa',
+    d: 'M380 130l22-34 18-12 18 8 20 24-8 28-24 26-20 20-16-8z M386 228l28-6 24 10 16 28-20 18-24-6-24-24z',
   },
-};
-
-const ACTIVE_STYLE = {
-  default: {
-    fill: '#2563EB',
-    stroke: '#60A5FA',
-    strokeWidth: 0.8,
-    outline: 'none',
-    transition: 'fill 0.3s ease, stroke 0.3s ease',
+  {
+    id: 'asia',
+    d: 'M452 124l42-20 34-6 26 12 14 32-8 36-28 24-44 10-18-30z',
   },
-  hover: {
-    fill: '#10B981',
-    stroke: '#34D399',
-    strokeWidth: 1.2,
-    outline: 'none',
-    cursor: 'pointer',
+  {
+    id: 'oceania',
+    d: 'M628 300l26-18 20 6 18 24-16 22-28-6-12-16z',
   },
-  pressed: {
-    fill: '#059669',
-    stroke: '#047857',
-    strokeWidth: 1.2,
-    outline: 'none',
-  },
-};
+];
 
 interface TooltipData {
   country: string;
@@ -104,21 +71,16 @@ interface TooltipData {
   y: number;
 }
 
+function toSvgPoint(coords: [number, number]) {
+  const [lon, lat] = coords;
+  return {
+    x: ((lon + 180) / 360) * 900,
+    y: ((90 - lat) / 180) * 500,
+  };
+}
+
 export function WorldMapClient({ countries }: { countries: CountryPresence[] }) {
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
-
-  const countryMap = useMemo(() => {
-    const map = new Map<string, CountryPresence>();
-    for (const c of countries) {
-      map.set(c.country.toLowerCase(), c);
-    }
-    return map;
-  }, [countries]);
-
-  const activeNames = useMemo(
-    () => new Set(countries.map((c) => c.country.toLowerCase())),
-    [countries],
-  );
 
   const markers = useMemo(
     () =>
@@ -132,32 +94,22 @@ export function WorldMapClient({ countries }: { countries: CountryPresence[] }) 
     [countries],
   );
 
-  const projectionConfig = useMemo(
-    () => ({ scale: 140, center: [20, 20] as [number, number] }),
-    [],
-  );
-
-  const handleMouseEnter = useCallback(
-    (geo: any, evt: React.MouseEvent) => {
-      const name: string = geo.properties?.name || '';
-      const lower = name.toLowerCase();
-      const lowerMapped = (COUNTRY_NAME_MAP[name] || name).toLowerCase();
-      const isActive = activeNames.has(lower) || activeNames.has(lowerMapped);
-      if (isActive) {
-        const match = countryMap.get(lower) || countryMap.get(lowerMapped);
-        if (match) {
-          const rect = (evt.target as SVGGElement).getBoundingClientRect?.();
-          setTooltip({
-            country: match.country,
-            projects: match.projects,
-            people: match.peopleReached,
-            x: rect ? rect.left + rect.width / 2 : evt.clientX,
-            y: rect ? rect.top - 10 : evt.clientY,
-          });
-        }
-      }
+  const handleMarkerMouseEnter = useCallback(
+    (
+      marker: CountryPresence & { coords: [number, number] },
+      evt: ReactMouseEvent<SVGCircleElement>,
+    ) => {
+      const rect = evt.currentTarget.ownerSVGElement?.getBoundingClientRect();
+      const { x, y } = toSvgPoint(marker.coords);
+      setTooltip({
+        country: marker.country,
+        projects: marker.projects,
+        people: marker.peopleReached,
+        x: rect ? rect.left + x * (rect.width / 900) : evt.clientX,
+        y: rect ? rect.top + y * (rect.height / 500) : evt.clientY,
+      });
     },
-    [activeNames, countryMap],
+    [],
   );
 
   const handleMouseLeave = useCallback(() => {
@@ -166,57 +118,48 @@ export function WorldMapClient({ countries }: { countries: CountryPresence[] }) 
 
   return (
     <div className="relative">
-      <ComposableMap
-        projection="geoMercator"
-        projectionConfig={projectionConfig}
-        width={900}
-        height={500}
+      <svg
+        viewBox="0 0 900 500"
         className="h-full w-full"
-        style={{ width: '100%', height: 'auto' }}
+        role="img"
+        aria-label="Global impact map"
       >
-        <ZoomableGroup zoom={1} minZoom={1} maxZoom={4}>
-          <Geographies geography={GEO_URL}>
-            {({ geographies }: { geographies: any[] }) =>
-              geographies.map((geo: any) => {
-                const name: string = geo.properties?.name || '';
-                const lower = name.toLowerCase();
-                const lowerMapped = (COUNTRY_NAME_MAP[name] || name).toLowerCase();
-                const isActive = activeNames.has(lower) || activeNames.has(lowerMapped);
-
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    tabIndex={isActive ? 0 : -1}
-                    role={isActive ? 'button' : undefined}
-                    aria-label={isActive ? `${name} - active country` : undefined}
-                    onMouseEnter={(evt: any) => handleMouseEnter(geo, evt)}
-                    onMouseLeave={handleMouseLeave}
-                    style={isActive ? ACTIVE_STYLE : MAP_STYLE}
-                  />
-                );
-              })
-            }
-          </Geographies>
-          {markers.map((marker) => (
-            <Marker key={marker.country} coordinates={marker.coords}>
-              <g>
-                <circle r={10} fill="none" stroke="#2563EB" strokeWidth={1.5} opacity={0.4}>
-                  <animate attributeName="r" values="6;14;6" dur="2s" repeatCount="indefinite" />
-                  <animate
-                    attributeName="opacity"
-                    values="0.6;0;0.6"
-                    dur="2s"
-                    repeatCount="indefinite"
-                  />
-                </circle>
-                <circle r={4} fill="#2563EB" />
-                <circle r={2} fill="#93C5FD" />
-              </g>
-            </Marker>
-          ))}
-        </ZoomableGroup>
-      </ComposableMap>
+        <rect width="900" height="500" rx="24" fill="#F8FBFF" />
+        <path
+          d="M80 150c0-40 38-70 78-64 24 4 42 20 62 28 28 10 46 18 76 12 23-5 44-12 68-18 30-7 58-8 88 2 22 7 38 20 58 40 20 20 30 48 28 75-2 24-12 48-28 67-18 20-42 30-67 38-32 9-62 8-94 10-43 1-80-8-118-24-32-14-62-34-84-60-16-19-26-43-23-68 4-24 13-45 28-60z"
+          fill="#E2E8F0"
+          stroke="#CBD5E1"
+          strokeWidth="2"
+        />
+        {CONTINENT_PATHS.map((shape) => (
+          <path key={shape.id} d={shape.d} fill="#F8FAFC" stroke="#94A3B8" strokeWidth="2" />
+        ))}
+        {markers.map((marker) => {
+          const { x, y } = toSvgPoint(marker.coords);
+          return (
+            <g key={marker.country}>
+              <circle
+                cx={x}
+                cy={y}
+                r={12}
+                fill="none"
+                stroke="#2563EB"
+                strokeWidth={1.5}
+                opacity={0.35}
+              />
+              <circle
+                cx={x}
+                cy={y}
+                r={5}
+                fill="#2563EB"
+                className="cursor-pointer"
+                onMouseEnter={(evt) => handleMarkerMouseEnter(marker, evt)}
+                onMouseLeave={handleMouseLeave}
+              />
+            </g>
+          );
+        })}
+      </svg>
 
       {tooltip && (
         <div

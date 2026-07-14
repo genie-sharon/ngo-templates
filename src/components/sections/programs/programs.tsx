@@ -17,6 +17,7 @@ import {
   Stethoscope,
   Leaf,
 } from 'lucide-react';
+import Image from 'next/image';
 import { useState, useCallback, type ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -241,10 +242,13 @@ function ProgramImage({
   }
 
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
-      loading={priority ? 'eager' : 'lazy'}
+      width={800}
+      height={600}
+      unoptimized
+      priority={priority}
       onError={() => setError(true)}
       className={cn('h-full w-full object-cover', className)}
     />

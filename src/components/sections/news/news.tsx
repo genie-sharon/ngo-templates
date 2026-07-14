@@ -3,6 +3,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight, User, Clock, Eye } from 'lucide-react';
+import Image from 'next/image';
 import { useId, useCallback, useEffect, useState } from 'react';
 
 import { SectionHeadingBlock, staggerItem } from '@/components/sections/motion';
@@ -246,9 +247,12 @@ function NewsImage({
   }
 
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
+      width={800}
+      height={450}
+      unoptimized
       loading={priority ? 'eager' : 'lazy'}
       onError={() => setError(true)}
       className={cn('h-full w-full object-cover', className)}
@@ -592,7 +596,14 @@ function TimelineArticle({ article }: { article: NewsArticle }) {
             {authorName && (
               <div className="mt-auto flex items-center gap-2 text-xs text-[var(--kindonar-color-neutral-500)]">
                 {authorAvatar && (
-                  <img src={authorAvatar} alt="" className="h-6 w-6 rounded-full object-cover" />
+                  <Image
+                    src={authorAvatar}
+                    alt=""
+                    width={24}
+                    height={24}
+                    unoptimized
+                    className="h-6 w-6 rounded-full object-cover"
+                  />
                 )}
                 <span>{authorName}</span>
               </div>
@@ -676,8 +687,8 @@ interface NewsProps {
 }
 
 export function News({ config, className }: NewsProps) {
-  if (!config) return null;
   const uid = useId();
+  if (!config) return null;
   const { layout, articles = [] } = config;
 
   if (!articles.length) return null;

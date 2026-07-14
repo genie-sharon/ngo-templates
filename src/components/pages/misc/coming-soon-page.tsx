@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Clock, Mail, Send, Sparkles } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/atoms/button';
 import { cn } from '@/lib/utils';
@@ -22,6 +22,17 @@ interface TimeLeft {
   seconds: number;
 }
 
+function calculateTimeLeft(launchDate: string): TimeLeft {
+  const diff = new Date(launchDate).getTime() - Date.now();
+  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  return {
+    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((diff / (1000 * 60)) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  };
+}
+
 export function ComingSoonPage({ config }: { config: ComingSoonConfig }) {
   const {
     title = 'Coming Soon',
@@ -31,32 +42,20 @@ export function ComingSoonPage({ config }: { config: ComingSoonConfig }) {
     backgroundColor,
   } = config;
 
-  const calculateTimeLeft = (): TimeLeft => {
-    const diff = new Date(launchDate).getTime() - Date.now();
-    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    return {
-      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((diff / (1000 * 60)) % 60),
-      seconds: Math.floor((diff / 1000) % 60),
-    };
-  };
-
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft);
-  const [isLaunched, setIsLaunched] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => calculateTimeLeft(launchDate));
+  const [now, setNow] = useState(() => new Date(launchDate).getTime());
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
-    setIsLaunched(new Date(launchDate).getTime() <= Date.now());
+    const timer = window.setInterval(() => {
+      setTimeLeft(calculateTimeLeft(launchDate));
+      setNow(Date.now());
+    }, 1000);
+    return () => window.clearInterval(timer);
   }, [launchDate]);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [launchDate]);
+  const isLaunched = new Date(launchDate).getTime() <= now;
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();

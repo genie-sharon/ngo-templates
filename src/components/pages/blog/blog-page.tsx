@@ -11,6 +11,7 @@ import {
   ChevronRight,
   X,
 } from 'lucide-react';
+import Image from 'next/image';
 import { useState, useMemo } from 'react';
 
 import { PageHero, PageLayout } from '@/components/pages/blocks/page-hero';
@@ -174,11 +175,13 @@ export function BlogPage({ config, className }: { config: BlogPageConfig; classN
             <a key={post.id} href={post.slug} className="group flex gap-3">
               {post.image && (
                 <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     src={post.image.src}
                     alt={post.image.alt}
+                    width={64}
+                    height={64}
+                    unoptimized
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
                   />
                 </div>
               )}
@@ -240,11 +243,13 @@ export function BlogPage({ config, className }: { config: BlogPageConfig; classN
                       className="relative aspect-video overflow-hidden"
                       tabIndex={-1}
                     >
-                      <img
+                      <Image
                         src={post.image.src}
                         alt={post.image.alt}
+                        width={800}
+                        height={450}
+                        unoptimized
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading={idx < 3 ? 'eager' : 'lazy'}
                       />
                       <span className="absolute top-3 left-3 rounded-full bg-[var(--kindonar-color-primary-500)] px-3 py-1 text-xs font-semibold text-white">
                         {post.category}

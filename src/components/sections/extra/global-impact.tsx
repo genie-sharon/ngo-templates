@@ -138,18 +138,17 @@ export function GlobalImpactSection({
   totalPeople,
   className,
 }: GlobalImpactSectionProps) {
-  if (!config.visible) return null;
-
-  const safeStats = Array.isArray(stats) ? stats : [];
-  const safeCountries = Array.isArray(countries) ? countries : [];
+  const safeStats = useMemo(() => (Array.isArray(stats) ? stats : []), [stats]);
+  const safeCountries = useMemo(() => (Array.isArray(countries) ? countries : []), [countries]);
   const countryCount = totalCountries ?? safeCountries.length;
   const projectCount = totalProjects ?? safeCountries.reduce((s, c) => s + c.projects, 0);
   const peopleCount = totalPeople ?? safeCountries.reduce((s, c) => s + c.peopleReached, 0);
 
-  const topCountries = useMemo(
-    () => [...safeCountries].sort((a, b) => b.peopleReached - a.peopleReached).slice(0, 4),
-    [safeCountries],
-  );
+  const topCountries = useMemo(() => {
+    return [...safeCountries].sort((a, b) => b.peopleReached - a.peopleReached).slice(0, 4);
+  }, [safeCountries]);
+
+  if (!config.visible) return null;
 
   return (
     <section

@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
+import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
@@ -52,11 +53,13 @@ export function TrustBadges({
             title={badge.name}
           >
             {badge.logo ? (
-              <img
+              <Image
                 src={badge.logo}
                 alt={`${badge.name} logo`}
                 className="h-8 w-auto object-contain md:h-10"
-                loading="lazy"
+                width={160}
+                height={40}
+                unoptimized
               />
             ) : (
               <span className="text-sm font-semibold text-[var(--kindonar-color-neutral-500)]">
@@ -92,11 +95,13 @@ export function TrustBadges({
           className="rounded-xl border border-[var(--kindonar-border-default)] bg-[var(--kindonar-surface-raised)] p-5 text-center transition-shadow hover:shadow-md"
         >
           {badge.logo && (
-            <img
+            <Image
               src={badge.logo}
               alt={`${badge.name} logo`}
               className="mx-auto mb-3 h-10 w-auto object-contain"
-              loading="lazy"
+              width={40}
+              height={40}
+              unoptimized
             />
           )}
           <h4 className="text-sm font-semibold text-[var(--kindonar-color-neutral-800)]">

@@ -4,6 +4,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Quote, Star, ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
+import NextImage from 'next/image';
 import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { Image } from '@/components/ui/media/image';
@@ -60,9 +61,12 @@ function TestimonialCardContent({ item, isDark }: { item: TestimonialItem; isDar
       {item.rating && <StarRating rating={item.rating} className="mt-4" />}
       <div className="mt-6 flex items-center gap-3">
         {item.avatar && (
-          <img
+          <NextImage
             src={item.avatar.src}
             alt={item.avatar.alt}
+            width={48}
+            height={48}
+            unoptimized
             className="h-12 w-12 flex-shrink-0 rounded-full object-cover"
           />
         )}
@@ -103,12 +107,14 @@ function CarouselTestimonials({ items, theme }: { items: TestimonialItem[]; them
 
   useEffect(() => {
     if (!emblaApi) return;
-    setScrollSnaps(emblaApi.scrollSnapList());
-    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
-    emblaApi.on('select', onSelect);
-    onSelect();
+    const syncState = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+      setScrollSnaps(emblaApi.scrollSnapList());
+    };
+    syncState();
+    emblaApi.on('select', syncState);
     return () => {
-      emblaApi.off('select', onSelect);
+      emblaApi.off('select', syncState);
     };
   }, [emblaApi]);
 

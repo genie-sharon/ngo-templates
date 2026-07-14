@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Download, FileText } from 'lucide-react';
+import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
@@ -69,9 +70,12 @@ export function AnnualReportsSection({ config, reports, className }: AnnualRepor
                   )}
                 >
                   {report.coverImage ? (
-                    <img
+                    <Image
                       src={report.coverImage.src}
                       alt={report.coverImage.alt}
+                      width={400}
+                      height={533}
+                      unoptimized
                       className="h-full w-full object-cover"
                     />
                   ) : (

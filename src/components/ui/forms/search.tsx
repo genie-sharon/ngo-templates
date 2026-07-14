@@ -1,6 +1,5 @@
 'use client';
 
-import { cva, type VariantProps } from 'class-variance-authority';
 import { Search as SearchIcon, X } from 'lucide-react';
 import { forwardRef, useState, type KeyboardEvent } from 'react';
 
@@ -8,12 +7,10 @@ import { cn } from '@/lib/utils';
 
 import { Input, type InputProps } from './input';
 
-export interface SearchVariants {
-  size?: 'sm' | 'md' | 'lg';
-}
-
-export interface SearchProps
-  extends Omit<InputProps, 'leftIcon' | 'rightIcon' | 'type' | 'onSubmit'>, SearchVariants {
+export interface SearchProps extends Omit<
+  InputProps,
+  'leftIcon' | 'rightIcon' | 'type' | 'onSubmit'
+> {
   onClear?: () => void;
   onSubmit?: (value: string) => void;
 }
